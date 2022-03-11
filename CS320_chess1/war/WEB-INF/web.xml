@@ -6,7 +6,15 @@
          xmlns="http://java.sun.com/xml/ns/javaee">
          
 <!-- Servlets -->
+<servlet>
+    <servlet-name>TestServlet</servlet-name>
+    <servlet-class>edu.ycp.cs320.team6.chess.servlet.TestServlet</servlet-class>
+  </servlet>
 
 <!-- Servlet mappings -->
+<servlet-mapping>
+    <servlet-name>TestServlet</servlet-name>
+    <url-pattern>/test</url-pattern>
+  </servlet-mapping>
 
 </web-app>

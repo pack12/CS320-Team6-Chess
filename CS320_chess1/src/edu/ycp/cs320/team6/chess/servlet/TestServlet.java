@@ -15,7 +15,7 @@ private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
-		System.out.println("Index Servlet: doGet");
+		System.out.println("Test Servlet: doGet");
 		
 		req.getRequestDispatcher("/_view/test.jsp").forward(req, resp);
 	}
