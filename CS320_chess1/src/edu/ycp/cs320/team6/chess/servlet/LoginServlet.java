@@ -19,4 +19,10 @@ private static final long serialVersionUID = 1L;
 		req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
 	}
 
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+		
+		System.out.println("Login Servlet: doPost");
+		
+	}
 }
