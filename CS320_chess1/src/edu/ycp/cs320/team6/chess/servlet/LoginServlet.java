@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import edu.ycp.cs320.team6.chess.model.Login;
+
 public class LoginServlet extends HttpServlet{
 private static final long serialVersionUID = 1L;
 	
@@ -23,6 +25,10 @@ private static final long serialVersionUID = 1L;
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		
 		System.out.println("Login Servlet: doPost");
+		
+		Login model = new Login();
+		
+		
 		
 	}
 }
