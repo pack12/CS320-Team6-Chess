@@ -76,10 +76,4 @@ public class Game{
 		board.movePiece(xinit, yinit, xfinal, yfinal);
 		Game.updateTurn();
 	}
-	
-	public int getClock() {
-		return clock;
-	}
-	
-	
 }
