@@ -54,7 +54,7 @@ public class Game{
 	//check to see if the move is legal
 	//ONLY INCLUDES: testing to see if the move is on the board and if it is the player's turn
 	
-	public static boolean validateMove(int xinit, int yinit, int xfinal, int yfinal) {
+	public boolean validateMove(int xinit, int yinit, int xfinal, int yfinal) {
 		if(Game.isPlayersTurn(xinit, yinit) && Game.isOnBoard(xfinal, yfinal) ) {
 			return true;
 		}
