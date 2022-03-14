@@ -25,9 +25,8 @@
 		<h1>Chess<h1>
           
           <p><a href="/chess/login">
-		<input type="Submit" value="Login" style="height=50px; width=180px;"></a></p>
-          
-          <p><a href="/chess/game">
+		<input type="Submit" value="Login" style="height=50px; width=180px;"></a><br>
+          <a href="/chess/game">
 		<input type="Submit" value="Start Matchmaking" style="height=50px; width=300px;"></a></p>
           
 	</body>
