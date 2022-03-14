@@ -15,7 +15,7 @@
 	text-align: center;
 	}
 </style>
-	<body style="background-color:AntiqueWhite">
+	<body style="background-color:SteelBlue">
 	
 	<h1>Login</h1>
 	

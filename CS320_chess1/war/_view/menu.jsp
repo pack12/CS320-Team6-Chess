@@ -13,12 +13,12 @@
 		font-size: 40px;
 		border: none;
 		border-radius: 10px;
-		background: green;
+		background: SandyBrown;
 		}
 		</style>
 	</head>
 
-	<body style="background-color:AntiqueWhite">
+	<body style="background-color:SteelBlue">
 	
 	
 	
