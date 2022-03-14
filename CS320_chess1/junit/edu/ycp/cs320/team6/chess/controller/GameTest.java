@@ -21,7 +21,6 @@ class GameTest {
 		controller = new Game();
 		
 		controller.startGame();
-		
 	}
 	
 	@Test
@@ -33,6 +32,8 @@ class GameTest {
 	
 	@Test
 	public void testMakeMove() {
-		
+		controller.makeMove(1, 1, 1, 2);
+		assertTrue(controller.validateMove(7, 7, 7, 6));
+		assertFalse(controller.validateMove(0, 0, 7, 7));
 	}
 }
