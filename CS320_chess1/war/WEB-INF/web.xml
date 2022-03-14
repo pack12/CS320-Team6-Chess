@@ -5,8 +5,10 @@
          version="2.5"
          xmlns="http://java.sun.com/xml/ns/javaee">
          
-<!-- Servlets -->
-<servlet>
+<!-- Servlets --><servlet>
+	<servlet-name>MenuServlet</servlet-name>
+	<servlet-class>edu.ycp.cs320.team6.chess.servlet.MenuServlet</servlet-class></servlet>
+	<servlet>
     <servlet-name>TestServlet</servlet-name>
     <servlet-class>edu.ycp.cs320.team6.chess.servlet.TestServlet</servlet-class>
   </servlet>
@@ -15,8 +17,10 @@
     <servlet-class>edu.ycp.cs320.team6.chess.servlet.LoginServlet</servlet-class>
   </servlet>
 
-<!-- Servlet mappings -->
-<servlet-mapping>
+<!-- Servlet mappings --><servlet-mapping>
+	<servlet-name>MenuServlet</servlet-name>
+	<url-pattern>/menu</url-pattern></servlet-mapping>
+	<servlet-mapping>
     <servlet-name>TestServlet</servlet-name>
     <url-pattern>/test</url-pattern>
   </servlet-mapping>
