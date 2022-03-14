@@ -24,7 +24,7 @@ public int getX() {
 	return xLocation;
 }
 
-public void setX(char xLocation) {
+public void setX(int xLocation) {
 	this.xLocation = xLocation;
 }
 
@@ -32,7 +32,7 @@ public int getY() {
 	return yLocation;
 }
 
-public void setY(char yLocation) {
+public void setY(int yLocation) {
 	this.yLocation = yLocation;
 }
 
