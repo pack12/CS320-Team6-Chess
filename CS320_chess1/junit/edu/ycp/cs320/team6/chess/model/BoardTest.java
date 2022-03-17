@@ -1,9 +1,11 @@
 package edu.ycp.cs320.team6.chess.model;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 import org.junit.Before;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+
+import edu.ycp.cs320.team6.chess.model.Board;
 
 class BoardTest {
 

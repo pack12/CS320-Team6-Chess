@@ -1,14 +1,14 @@
 package edu.ycp.cs320.team6.chess.controller;
 
 import edu.ycp.cs320.team6.chess.model.*;
+import edu.ycp.cs320.team6.chess.controller.*;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
 import org.junit.Before;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 class GameTest {
 	

@@ -1,16 +1,19 @@
 package edu.ycp.cs320.team6.chess.model;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+
+import edu.ycp.cs320.team6.chess.model.Piece;
 
 class PieceTest {
 
 	private Piece piece;
 	
 	@Before
-	public void setup() {
+	public void setUp() {
 		piece = new Piece("pawn", false, 1, 1, "white", true);
 	}
 	
