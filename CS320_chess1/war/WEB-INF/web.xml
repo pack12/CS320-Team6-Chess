@@ -6,6 +6,9 @@
          xmlns="http://java.sun.com/xml/ns/javaee">
          
 <!-- Servlets --><servlet>
+	<servlet-name>CreditsServlet</servlet-name>
+	<servlet-class>edu.ycp.cs320.team6.chess.servlet.CreditsServlet</servlet-class></servlet>
+	<servlet>
 	<servlet-name>MenuServlet</servlet-name>
 	<servlet-class>edu.ycp.cs320.team6.chess.servlet.MenuServlet</servlet-class></servlet>
 	<servlet>
@@ -22,6 +25,9 @@
   </servlet>
 
 <!-- Servlet mappings --><servlet-mapping>
+	<servlet-name>CreditsServlet</servlet-name>
+	<url-pattern>/credits</url-pattern></servlet-mapping>
+	<servlet-mapping>
 	<servlet-name>MenuServlet</servlet-name>
 	<url-pattern>/menu</url-pattern></servlet-mapping>
 	<servlet-mapping>

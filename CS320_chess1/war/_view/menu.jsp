@@ -11,7 +11,6 @@
 		input[type=Submit] {
 		text-align: Center;
 		font-size: 40px;
-		border: none;
 		border-radius: 10px;
 		background: SandyBrown;
 		}
@@ -27,7 +26,9 @@
           <p><a href="/chess/login">
 		<input type="Submit" value="Login" style="height=50px; width=180px;"></a><br>
           <a href="/chess/game">
-		<input type="Submit" value="Start Matchmaking" style="height=50px; width=300px;"></a></p>
+		<input type="Submit" value="Start Matchmaking" style="height=50px; width=300px;"></a></p><br>
+		  <p><a href="/chess/credits">
+		<input type="Submit" value="Credits" style="height=50px; width=200px;"></a>
           
 	</body>
 </html>

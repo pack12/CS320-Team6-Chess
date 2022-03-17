@@ -7,15 +7,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class MenuServlet extends HttpServlet {
+public class CreditsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
-		System.out.println("Menu Servlet: doGet");
+		System.out.println("Credits Servlet: doGet");
 		
-		req.getRequestDispatcher("/_view/menu.jsp").forward(req, resp);
+		req.getRequestDispatcher("/_view/credits.jsp").forward(req, resp);
 	}
 }
