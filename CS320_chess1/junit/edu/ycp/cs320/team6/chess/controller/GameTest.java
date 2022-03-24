@@ -1,39 +1,37 @@
 package edu.ycp.cs320.team6.chess.controller;
 
-import edu.ycp.cs320.team6.chess.model.*;
-
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
 import org.junit.Before;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-class GameTest {
-	
+import edu.ycp.cs320.team6.chess.model.*;
+import edu.ycp.cs320.team6.chess.controller.Game;
+
+public class GameTest {
 	private Board model;
-	private Game controller;
-	
+    private Game controller;
+
 	@Before
-	public void setup() {
+	public void setUp() throws Exception {
 		model = new Board();
-		controller = new Game();
-		
-		controller.startGame();
+        controller = new Game();
+
+        controller.startGame();
 	}
-	
+
 	@Test
 	public void testValidateMove() {
-		assertTrue(controller.validateMove(1, 1, 1, 2));
-		assertFalse(controller.validateMove(7, 7, 7, 6));
-		assertTrue(controller.validateMove(0, 0, 7, 7));
-	}
-	
-	@Test
-	public void testMakeMove() {
-		controller.makeMove(1, 1, 1, 2);
-		assertTrue(controller.validateMove(7, 7, 7, 6));
-		assertFalse(controller.validateMove(0, 0, 7, 7));
-	}
+        assertTrue(controller.validateMove(1, 1, 1, 2));
+        assertFalse(controller.validateMove(7, 7, 7, 6));
+        assertTrue(controller.validateMove(0, 0, 7, 7));
+    }
+
+    @Test
+    public void testMakeMove() {
+        controller.makeMove(1, 1, 1, 2);
+        assertTrue(controller.validateMove(7, 7, 7, 6));
+        assertFalse(controller.validateMove(0, 0, 7, 7));
+    }
+
 }
