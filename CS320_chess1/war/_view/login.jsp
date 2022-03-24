@@ -14,18 +14,25 @@
 	div{
 	text-align: center;
 	}
+	.center{
+	margin: 0;
+	position: absolute;
+	left: 50%;}
 </style>
 	<body style="background-color:SteelBlue">
 	
 	<h1>Login</h1>
 	
-		<form action="userlogin" method="post">
+		<form  action="game" method="post">
 		
 					<div>
                                User Name <input type="text" name="username"><br><br>
                               Password <input type="password" name="password"><br><br>
-                           <input type="submit" value="login">
+                              
+                              
 					</div>
            </form>
+           <a href=game>
+                           <input type="submit" value="login" class="center"> </a>
 	</body>
 </html>

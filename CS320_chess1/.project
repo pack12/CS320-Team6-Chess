@@ -14,11 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>war/_view/Images</name>
-			<type>2</type>
-			<location>C:/Users/Bean/cs320-spring2022/CS320-Team6-Chess/CS320_chess1/Images</location>
-		</link>
-	</linkedResources>
 </projectDescription>
