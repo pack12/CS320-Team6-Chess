@@ -32,7 +32,7 @@
                               
 					</div>
            </form>
-           <a href=game>
+           <a href=fullmenu>
                            <input type="submit" value="login" class="center"> </a>
 	</body>
 </html>

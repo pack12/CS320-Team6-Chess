@@ -23,6 +23,10 @@
     <servlet-name>GameServlet</servlet-name>
     <servlet-class>edu.ycp.cs320.team6.chess.servlet.GameServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>FullMenuServlet</servlet-name>
+    <servlet-class>edu.ycp.cs320.team6.chess.servlet.FullMenuServlet</servlet-class>
+  </servlet>
 
 <!-- Servlet mappings --><servlet-mapping>
 	<servlet-name>CreditsServlet</servlet-name>
@@ -41,6 +45,10 @@
   <servlet-mapping>
     <servlet-name>GameServlet</servlet-name>
     <url-pattern>/game</url-pattern>
+  </servlet-mapping>
+<servlet-mapping>
+    <servlet-name>FullMenuServlet</servlet-name>
+    <url-pattern>/fullmenu</url-pattern>
   </servlet-mapping>
 
 </web-app>
