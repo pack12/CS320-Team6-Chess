@@ -6,16 +6,16 @@ import org.junit.Before;
 import org.junit.Test;
 
 import edu.ycp.cs320.team6.chess.model.*;
-import edu.ycp.cs320.team6.chess.controller.Game;
+import edu.ycp.cs320.team6.chess.controller.GameController;
 
 public class GameTest {
 	private Board model;
-    private Game controller;
+    private GameController controller;
 
 	@Before
 	public void setUp() throws Exception {
 		model = new Board();
-        controller = new Game();
+        controller = new GameController();
 
         controller.startGame();
 	}
