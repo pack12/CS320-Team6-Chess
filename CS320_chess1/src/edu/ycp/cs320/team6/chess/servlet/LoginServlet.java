@@ -34,17 +34,30 @@ private static final long serialVersionUID = 1L;
 			String userName = req.getParameter("username");
 			String passWord = req.getParameter("password");
 			
+			
 			model.setUserName(userName);
 			model.setPassword(passWord);
+			if(model.getUserName().equals("jkettula")) {
+				
+				
+				resp.sendRedirect("fullmenu");
+//				req.getRequestDispatcher("/_view/fullmenu.jsp").forward(req, resp);
+			}
 			
-			System.out.println(userName + passWord);
+			System.out.println(userName +" " + passWord);
 			System.out.println(model.getUserName() + model.getPassword());
+			
+			
 			
 		} catch(Exception e) {
 			errorMessage = "Invalid Username";
 		}
-		System.out.println(model.getUserName());
-	req.getRequestDispatcher("/_view/fullmenu.jsp").forward(req, resp);	
+		//System.out.println(model.getUserName());
+	
+		
+		
+		req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
+		
 	}
 
 
