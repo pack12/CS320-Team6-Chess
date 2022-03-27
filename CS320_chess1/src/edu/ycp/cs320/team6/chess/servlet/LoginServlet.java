@@ -40,8 +40,8 @@ private static final long serialVersionUID = 1L;
 			if(model.getUserName().equals("jkettula")) {
 				
 				
-				resp.sendRedirect("fullmenu");
-//				req.getRequestDispatcher("/_view/fullmenu.jsp").forward(req, resp);
+//				resp.sendRedirect("fullmenu");
+				req.getRequestDispatcher("/_view/fullmenu.jsp").forward(req, resp);
 			}
 			
 			System.out.println(userName +" " + passWord);
