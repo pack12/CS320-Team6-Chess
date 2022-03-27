@@ -12,7 +12,7 @@ public abstract class Piece{
 		this.X = X;
 		this.Y = Y;
 		this.hasMoved = false;	
-}
+	}
 	
 	public void move(int destinationX, int destinationY){
 		this.X = destinationX;
