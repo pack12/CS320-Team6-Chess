@@ -9,12 +9,12 @@ import edu.ycp.cs320.team6.chess.model.*;
 import edu.ycp.cs320.team6.chess.controller.GameController;
 
 public class GameTest {
-	private Board model;
+	private BoardModel model;
     private GameController controller;
 
 	@Before
 	public void setUp() throws Exception {
-		model = new Board();
+		model = new BoardModel();
         controller = new GameController();
 
         controller.startGame();

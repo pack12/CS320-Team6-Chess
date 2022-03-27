@@ -18,6 +18,7 @@ public class Bishop extends Piece{
 	
 	public boolean validateMove(int Xgoing, int Ygoing, int[][] board) {
 		return true;
-	}
+	} 
+	 
 	
 }

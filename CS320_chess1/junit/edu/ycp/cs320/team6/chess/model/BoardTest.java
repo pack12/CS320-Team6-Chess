@@ -5,34 +5,34 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.ycp.cs320.team6.chess.model.Board;
+import edu.ycp.cs320.team6.chess.model.BoardModel;
 
 public class BoardTest {
-	private Board board;
+	private BoardModel boardModel;
 
 	@Before
 	public void setUp() {
-		board = new Board();
-        board.fillBoard();
+		boardModel = new BoardModel();
+        boardModel.fillBoard();
 	}
 
 	@Test
     public void testHasPiece() {
-        assertTrue(board.hasPiece(0, 0));
-        assertFalse(board.hasPiece(4, 4));
+        assertTrue(boardModel.hasPiece(0, 0));
+        assertFalse(boardModel.hasPiece(4, 4));
     }
 
     @Test
     public void testGetPiece() {
-        board.removePiece(3, 0);
-        assertEquals(board.getPiece(3, 0), null);
+        boardModel.removePiece(3, 0);
+        assertEquals(boardModel.getPiece(3, 0), null);
     }
 
     @Test
     public void testClearBoard() {
-        assertTrue(board.hasPiece(1, 1));
-        board.clearBoard();
-        assertFalse(board.hasPiece(1, 1));
+        assertTrue(boardModel.hasPiece(1, 1));
+        boardModel.clearBoard();
+        assertFalse(boardModel.hasPiece(1, 1));
     }
 
 }

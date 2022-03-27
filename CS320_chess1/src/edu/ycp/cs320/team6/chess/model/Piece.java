@@ -39,7 +39,5 @@ public abstract class Piece{
 		else {
 			return i;
 		}
-			
 	}
-	
 }
