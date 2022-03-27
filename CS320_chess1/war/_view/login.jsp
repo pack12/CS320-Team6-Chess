@@ -23,16 +23,22 @@
 	
 	<h1>Login</h1>
 	
-		<form  action="game" method="post">
+		<form  action="${pageContext.servletContext.contextPath}/fullmenu" method="post">
 		
 					<div>
-                               User Name <input type="text" name="username"><br><br>
-                              Password <input type="password" name="password"><br><br>
+                               User Name <input type="text" value="${username}"/><br><br>
+                              Password <input type="password" value="${password}"/><br><br>
                               
                               
 					</div>
-           </form>
-           <a href=fullmenu>
-                           <input type="submit" value="login" class="center"> </a>
+           
+          <!-- <a href=fullmenu> -->
+                           <input type="submit" value="login" class="center">  <!-- </a> -->
+                           </form>
+                           <form action="${pageContext.servletContext.contextPath}/login" method="post">
+                           <input type="submit" value="press" method="post">
+                           </form>
+                           
+                          
 	</body>
 </html>

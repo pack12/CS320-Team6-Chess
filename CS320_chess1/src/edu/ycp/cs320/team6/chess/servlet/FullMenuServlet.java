@@ -28,6 +28,8 @@ private static final long serialVersionUID = 1L;
 		
 		FullMenu model = new FullMenu();
 		
+		req.getRequestDispatcher("_view/fullmenu.jsp").forward(req, resp);
+		
 		
 		
 	}

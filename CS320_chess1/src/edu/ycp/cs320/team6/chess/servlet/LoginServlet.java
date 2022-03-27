@@ -28,7 +28,24 @@ private static final long serialVersionUID = 1L;
 		
 		Login model = new Login();
 		
+		String errorMessage = null;
 		
-		
+		try {
+			String userName = req.getParameter("username");
+			String passWord = req.getParameter("password");
+			
+			model.setUserName(userName);
+			model.setPassword(passWord);
+			
+			System.out.println(userName + passWord);
+			System.out.println(model.getUserName() + model.getPassword());
+			
+		} catch(Exception e) {
+			errorMessage = "Invalid Username";
+		}
+		System.out.println(model.getUserName());
+	req.getRequestDispatcher("/_view/fullmenu.jsp").forward(req, resp);	
 	}
+
+
 }
