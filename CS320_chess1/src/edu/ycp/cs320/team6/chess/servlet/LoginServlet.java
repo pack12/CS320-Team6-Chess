@@ -41,6 +41,7 @@ private static final long serialVersionUID = 1L;
 				
 				
 //				resp.sendRedirect("fullmenu");
+				req.setAttribute("username", userName);
 				req.getRequestDispatcher("/_view/fullmenu.jsp").forward(req, resp);
 			}
 			
