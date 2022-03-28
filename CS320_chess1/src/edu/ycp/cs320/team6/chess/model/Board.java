@@ -10,7 +10,13 @@ public class Board{
 		board = new int[8][8];
 	}
 	
-	public int[][] getSpot(int i, int j) {
-		return 
+	public int getSpot(int x, int y) {
+		
+		return board[x][y];
+	}
+	
+	
+	public void getPiece() {
+		//null
 	}
 }

@@ -24,4 +24,8 @@ public class Player{
 	public void pieceTaken(int i) {
 		offBoard.add(piece[i]);
 	}
+	
+	public void updatePiece() {
+		//null
+	}
 }

@@ -16,9 +16,9 @@ public class GameController{
 		clock = 600;
 	}
 	
-	public void startGame() {
-		boardModel.fillBoard();
-	}
+//	public void startGame() {
+//		boardModel.fillBoard();
+//	}
 	
 	public void clearGame() {
 		boardModel.clearBoard();
@@ -26,17 +26,17 @@ public class GameController{
 	
 	//check color with turn to see if it is the player's turn
 	
-	public static boolean isPlayersTurn(int x, int y) {
-		if (boardModel.getPiece(x, y).getColor() == "white" && turn == 1) {
-			return true;
-		}
-		else if (boardModel.getPiece(x, y).getColor() == "black" && turn == 2) {
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
+//	public static boolean isPlayersTurn(int x, int y) {
+//		if (boardModel.getPiece(x, y).getColor() == "white" && turn == 1) {
+//			return true;
+//		}
+//		else if (boardModel.getPiece(x, y).getColor() == "black" && turn == 2) {
+//			return true;
+//		}
+//		else {
+//			return false;
+//		}
+//	}
 	
 	//check to see if the destination is on the board
 	

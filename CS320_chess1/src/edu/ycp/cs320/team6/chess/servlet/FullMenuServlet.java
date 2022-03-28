@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServlet;
 
 import edu.ycp.cs320.team6.chess.model.FullMenu;
+import edu.ycp.cs320.team6.chess.model.Login;
 
 public class FullMenuServlet extends HttpServlet{
 private static final long serialVersionUID = 1L;
@@ -15,8 +16,14 @@ private static final long serialVersionUID = 1L;
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		Login model = new Login();
+		
 		
 		System.out.println("FullMenu Servlet: doGet");
+//		String username = req.getParameter("username");
+//		System.out.println(username);
+//		System.out.println(model.getUserName());
+//		req.setAttribute("username", username);
 		
 		req.getRequestDispatcher("/_view/fullmenu.jsp").forward(req, resp);
 	}
@@ -27,6 +34,8 @@ private static final long serialVersionUID = 1L;
 		System.out.println("FullMenu Servlet: doPost");
 		
 		FullMenu model = new FullMenu();
+		
+		
 		
 		req.getRequestDispatcher("_view/fullmenu.jsp").forward(req, resp);
 		

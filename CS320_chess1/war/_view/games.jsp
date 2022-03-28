@@ -21,8 +21,8 @@
 	
 	
 	
-		<h1>Chess<h1>
-		<p>Hi ${username}!</p>
+		<h1>${username}'s Games<h1>
+		
 		<br>
           
          
@@ -33,7 +33,7 @@
 		<br>
 		  <a href="/chess/credits">
 		<input type="Submit" value="Credits" style="height=50px; width=200px;"/></a><br>
-		<a href="/chess/games">
-        <input type="Submit" value="Games" style=" height=50px; width=200px;"/> </a>
+		
+        <input type="Submit" value="Games" style=" height=50px; width=200px;"/>
 	</body>
 </html>
