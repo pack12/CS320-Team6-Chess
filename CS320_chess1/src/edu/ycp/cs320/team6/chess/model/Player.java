@@ -20,6 +20,11 @@ public class Player{
 	public void setPiece(int i) {
 		this.playerPiece = this.piece[i];
 	}
+	
+	
+	public Piece getPiece() {
+		return playerPiece;
+	}
 
 //Bean: 
 	//I slightly changed some of the methods in the player class. Let me know what you think. 
@@ -48,8 +53,8 @@ public class Player{
 		offBoard.add(piece[i]);
 	}
 	
-	public void updatePiece() {
+	public void updatePiece(int newX, int newY) {
+		playerPiece.move(newX, newY);
 		
-		//null
 	}
 }
