@@ -6,6 +6,7 @@ public class King extends Piece{
 	public King(int X, int Y, boolean hasMoved) {
 		super(X, Y, hasMoved);
 		
+		
 	}
 	
 	public boolean sees(int lookX, int lookY) {
