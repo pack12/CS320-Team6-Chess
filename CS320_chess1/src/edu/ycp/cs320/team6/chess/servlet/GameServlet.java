@@ -27,21 +27,25 @@ private static final long serialVersionUID = 1L;
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		System.out.println("Game Servlet: doPost");
 		
-		String errorMessage = null;
-		int xPosPiece = getIntfromParam(req.getParameter("PosX"));
-		int yPosPiece = getIntfromParam(req.getParameter("PosY"));
-		boolean hasMoved = getBoolFromParam(req.getParameter("hasMoved"));
-		try {
-			String piece = req.getParameter("piece");
-		}catch(Exception e) {
-			errorMessage = "Error";
+		
+		String from = req.getParameter("start");
+		String to = req.getParameter("end");
+ 
+		if(from != "$(start)") {
+		System.out.println(from);
 		}
 		
-		GameController controller = new GameController();
+		if(to != "$(end)") {
+		System.out.println(to);
+		}
 		
 		
+			
 		//Piece piece = new Piece(xPosPiece, yPosPiece, hasMoved);
 		//controller.setModel(piece);
+		
+		// Forward to view to render the result HTML document
+				req.getRequestDispatcher("/_view/game.jsp").forward(req, resp);
 		
 	}
 private int getIntfromParam(String s) {
