@@ -36,11 +36,12 @@ public class BoardTest {
 //    }
     
     @Test
-    public void testGetSpot() {
+   public void testGetSpot() {
     	model = new Board();
 //    	assertTrue(model.getSpot(0, 0));
-    	int x = model.getSpot(0, 0);
-    	System.out.println(x);
+    	//int x = model.getSpot(0, 0);
+    	//System.out.println(x);
+    	assertEquals(0,model.getSpot(3, 4));
     	
     }
 

@@ -21,6 +21,8 @@ public class Player{
 		this.playerPiece = this.piece[i];
 	}
 	
+	//Returns a general piece depending on what integer is inputed into the Pieces[] array. This is general method, NOT based on location.
+	//The getPiece() method based on location is in Board.java
 	
 	public Piece getPiece() {
 		return playerPiece;
@@ -42,7 +44,7 @@ public class Player{
 //	}
 
 	
-	//MK2
+	//MK2 of setPiece
 //	public void setPiece(int i) {
 //		this.piece[i] = this.playerPiece;
 //	}
@@ -55,6 +57,7 @@ public class Player{
 	
 	public void updatePiece(int newX, int newY) {
 		playerPiece.move(newX, newY);
+		boolean hasPieceMoved = playerPiece.hasMoved;
 		
 	}
 }

@@ -8,6 +8,9 @@ import edu.ycp.cs320.team6.chess.model.Login;
 public class Game{
 	private Board board;
 	private Player player;
+	private Player opponent;
+	private Piece playerPiece;
+	
 	
 	 
 	
@@ -24,35 +27,25 @@ public class Game{
 		this.player = player;
 	}
 	
-	public void validateMove(int prevX, int prevY, int newx, int newy) {
-//		
-//		
-//		board [prevx][prevy].getThing() possibly integer >>give us what we need to know
+	public void setOpponent(Player opponent) {
+		this.opponent = opponent;
+	}
+	
+	public void validateMove(int prevX, int prevY, int newX, int newY) {
+		//Here's my understanding of what this validate move is
+		//There' a validate move for the individual piece that makes sure whether the piece made a valid move
+		//This validate move is for the overarching board, this validate move is to see whether there is a piece in the new spot or not
 		
-		//wehen we put in this ^^ it will return whatever piece is in that pos
-		
-		
-		
-		
-		
-		//^^Will return whatever is there, which will be indictative of piece, will use it directly
-		
-		//depending on how we store info, it will be integer or string of piece of information 
-		//From there, info will be put into playerlogic to store info
-		
-		
-		 //If true, update board, update pieceposition, update if its capturing, update if its captured etc..
-		
-		
-		
-		
-		board.getSpot(prevX, prevY);
-		
-		if(board.getSpot(prevX, prevY)== 0) {
-			player.updatePiece();
+		if(board.getSpot(prevX, prevY)== 0) 
+		{
+			player.updatePiece(newX, newY);
+		}
+		else {
+			//Else the position remains the same for the piece
+			player.updatePiece(prevX, prevY);
 		}
 		
-		//board[prevX][prevY].getSpot();
+		
 		
 		
 		
