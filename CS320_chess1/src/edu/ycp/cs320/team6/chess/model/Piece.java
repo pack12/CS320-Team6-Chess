@@ -7,11 +7,14 @@ public abstract class Piece{
 	protected int X;
 	protected int Y;
 	protected boolean hasMoved;
+	//protected String color;
+	 
 	
 	public Piece(int X, int Y, boolean hasMoved) {
 		this.X = X;
 		this.Y = Y;
-		this.hasMoved = false;	
+		this.hasMoved = false;
+		//this.color = color;
 	}
 	
 	public void move(int destinationX, int destinationY){

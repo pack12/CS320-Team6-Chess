@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-import edu.ycp.cs320.team6.chess.controller.GameController;
+import edu.ycp.cs320.team6.chess.controller.Game;
 import edu.ycp.cs320.team6.chess.model.Piece;
 public class GameServlet extends HttpServlet{
 	
