@@ -85,25 +85,25 @@ public class ChessDerbyDatabase{
 		});
 	}
 	
-	public DBPiece findUserByUsernameAndPassword(final String username, final String password) {
-		return executeTransaction(new Transaction<DBPiece>() {
+	public DBUser findUserByUsernameAndPassword(final String username, final String password) {
+		return executeTransaction(new Transaction<DBUser>() {
 			@Override
-			public DBPiece execute(Connection conn) throws SQLException {
+			public DBUser execute(Connection conn) throws SQLException {
 				PreparedStatement stmt = null;
 				ResultSet resultSet = null;
 				
 				try {
 					// Retrieve all attributes from piece table
 					stmt = conn.prepareStatement(
-							"select pieces.*" +
-							"  from pieces" +
-							" where pieces.x = ? " +
-							"   and pieces.y = ?"
+							"select userInfo.*" +
+							"  from userInfo" +
+							" where user.username = ? " +
+							"   and user.password = ?"
 					);
-					stmt.setInt(1, x);
-					stmt.setInt(2,  y);
+					stmt.setString(1, username);
+					stmt.setString(2,  password);
 					
-					DBPiece result = new DBPiece();
+					DBUser result = new DBUser();
 					
 					resultSet = stmt.executeQuery();
 					
@@ -115,13 +115,13 @@ public class ChessDerbyDatabase{
 						
 						// load piece into result
 						// retrieve attributes from resultSet starting with index 1
-						loadPiece(result, resultSet, 1);
+						loadUser(result, resultSet, 1);
 					
 					}
 					
 					// check if the title was found
 					if (!found) {
-						System.out.println("There is no piece at <" + x + "> and <" + y);
+						System.out.println("The user" + username + "does not exist, or the password is incorrect");
 						result = null;
 					}
 					
