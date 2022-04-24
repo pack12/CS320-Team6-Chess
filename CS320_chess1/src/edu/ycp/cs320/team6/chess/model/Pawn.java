@@ -12,6 +12,8 @@ public class Pawn extends Piece{
 	public boolean sees(int lookX, int lookY) {
 		if (abs(X - lookX) == 1 && (lookY - Y) == 1) {
 			return true;
+		}else if(abs(X - lookX) == 0 && (lookY - Y) == 1 || abs(X - lookX) == 0 && (lookY - Y) == 2 ) {
+			return true;
 		}
 		else {
 			return false;
