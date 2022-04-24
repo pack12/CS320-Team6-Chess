@@ -85,6 +85,36 @@ public class ChessDerbyDatabase{
 		});
 	}
 	
+	
+	
+	public Boolean updatePiecePosition(final int startx, final int starty, final int endx, final int endy) {
+		return executeTransaction(new Transaction<Boolean>() {
+			@Override
+			public Boolean execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				
+				try {
+					// Replace the x and y for the initial position with the final position
+					stmt = conn.prepareStatement(
+							"update pieces" +
+							"set pieces.x = ?, pieces.y = ?" +
+							"where pieces.x = ?, pieces.y = ?"
+					);
+					stmt.setInt(1, endx);
+					stmt.setInt(2,  endy);
+					stmt.setInt(3, startx);
+					stmt.setInt(4,  starty);
+					
+					stmt.executeQuery();
+					
+					return true;
+				} finally {
+					DB_Util.closeQuietly(stmt);
+				}
+			}
+		});
+	}
+	
 	public DBUser findUserByUsernameAndPassword(final String username, final String password) {
 		return executeTransaction(new Transaction<DBUser>() {
 			@Override
@@ -215,7 +245,7 @@ public class ChessDerbyDatabase{
 						"create table Pieces (" +									
 						"	type varchar(10)," +
 						"	color varchar(10)," +
-						"   hasMoved varchar(1)" +
+						"   hasMoved varchar(1)," +
 						"   x integer," +
 						"   y integer" +
 						")"
@@ -223,10 +253,10 @@ public class ChessDerbyDatabase{
 					stmt1.executeUpdate();
 					
 					stmt2 = conn.prepareStatement(
-							"create table Users (" +
+							"create table userInfo (" +
 							"	username varchar(70)," +
 							"	password varchar(15)," +
-							"   ranking integer, " +
+							"   ranking integer" +
 							")"
 					);
 					stmt2.executeUpdate();
