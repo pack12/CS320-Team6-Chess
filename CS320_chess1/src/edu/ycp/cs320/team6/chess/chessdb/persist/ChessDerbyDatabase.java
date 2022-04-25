@@ -72,7 +72,7 @@ public class ChessDerbyDatabase{
 					
 					// check if the title was found
 					if (!found) {
-						System.out.println("There is no piece at <" + x + "> and <" + y);
+						System.out.println("There is no piece at <" + x + "> and <" + y + ">");
 						result = null;
 					}
 					
@@ -125,10 +125,10 @@ public class ChessDerbyDatabase{
 				try {
 					// Retrieve all attributes from piece table
 					stmt = conn.prepareStatement(
-							"select userInfo.*" +
+							"select *" +
 							"  from userInfo" +
-							" where user.username = ? " +
-							"   and user.password = ?"
+							" where userInfo.username = ? " +
+							"   and userInfo.password = ?"
 					);
 					stmt.setString(1, username);
 					stmt.setString(2,  password);
@@ -151,7 +151,7 @@ public class ChessDerbyDatabase{
 					
 					// check if the title was found
 					if (!found) {
-						System.out.println("The user" + username + "does not exist, or the password is incorrect");
+						System.out.println("The user " + username + " does not exist, or the password is incorrect");
 						result = null;
 					}
 					
@@ -242,7 +242,7 @@ public class ChessDerbyDatabase{
 				
 				try {
 					stmt1 = conn.prepareStatement(
-						"create table Pieces (" +									
+						"create table pieces (" +									
 						"	type varchar(10)," +
 						"	color varchar(10)," +
 						"   hasMoved varchar(1)," +

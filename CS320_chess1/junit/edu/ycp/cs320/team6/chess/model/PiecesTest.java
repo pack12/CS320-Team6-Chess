@@ -12,6 +12,7 @@ public class PiecesTest {
 		
 		Bishop bishop = new Bishop(2,0,false);
 		assertEquals(true, bishop.sees(3, 1));
+		assertEquals(false, bishop.sees(10, 8));
 //		assertEquals(false, bishop.sees(0, 0));
 		
 	}
