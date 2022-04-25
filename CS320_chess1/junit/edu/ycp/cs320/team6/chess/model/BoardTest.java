@@ -35,14 +35,14 @@ public class BoardTest {
 //        assertFalse(boardModel.hasPiece(1, 1));
 //    }
     
-   @Test
-   public void testGetSpot() {
-    	model = new Board();
-//    	assertTrue(model.getSpot(0, 0));
-    	int x = model.getSpot(0, 0);
-    	System.out.println(x);
-
-    	
-    }
+//   @Test
+//   public void testGetSpot() {
+//    	model = new Board();
+////    	assertTrue(model.getSpot(0, 0));
+//    	int x = model.getSpot(0, 0);
+//    	System.out.println(x);
+//
+//    	
+//    }
 
 }

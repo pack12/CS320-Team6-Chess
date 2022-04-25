@@ -5,24 +5,28 @@ import edu.ycp.cs320.team6.chess.model.Piece;
 import java.util.ArrayList;
 
 public class Board{
-	private int[][] board;
+	
+	//I am changing this from int to string, if it doesn't work, I will change it back
+	private String[][] board;
+	
 	private Piece[][] board1;
+	
 	private Piece piece;
 	ArrayList<Piece> pieces = new ArrayList<Piece>();
 	
 	public Board(){
-		board = new int[8][8];
-		board1 = new Piece[8][8];
+		board = new String[8][8];
+//		board1 = new Piece[8][8];
 	}
 	
 	
 	//This method may potentially be useless
 	//I want this method to return an array position of board, so if I pass in 3 4, I want the return to be "[3][4]
 	
-	public int getSpot(int x, int y) {
-		
-		return board[x][y];
-	}
+//	public int getSpot(int x, int y) {
+//		
+//		return board[x][y];
+//	}
 	
 	public Piece getspot(int x, int y) {
 		return board1[x][y];
@@ -30,11 +34,13 @@ public class Board{
 	
 	//Board is going to be able to get a piece depending on the location data inputed in
 	//BUT WHAT do we need? I need to be able to access pieces and their location data, and see if they match up with the Board array location. 
-	public void addPieceToBoard(Piece piece, int x, int y) {
-		this.board1[x][y] = piece;
+	public void addPieceToBoard(String fileName, int x, int y) {
+		board[x][y] = fileName;
 		
 	}
-	
+	public String getPiece(int x, int y) {
+		return board[x][y];
+	}
 	public void fillBoard() {
 		
 		//Creating the White Colored pieces

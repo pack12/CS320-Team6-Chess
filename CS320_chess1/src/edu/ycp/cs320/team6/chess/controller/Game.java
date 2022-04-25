@@ -32,18 +32,16 @@ public class Game{
 	}
 	
 	public void validateMove(int prevX, int prevY, int newX, int newY) {
-		//Here's my understanding of what this validate move is
-		//There' a validate move for the individual piece that makes sure whether the piece made a valid move
-		//This validate move is for the overarching board, this validate move is to see whether there is a piece in the new spot or not
 		
-		if(board.getSpot(prevX, prevY)== 0) 
-		{
-			player.updatePiece(newX, newY);
-		}
-		else {
-			//Else the position remains the same for the piece
-			player.updatePiece(prevX, prevY);
-		}
+		
+//		if(board.getSpot(prevX, prevY)== 0) 
+//		{
+//			player.updatePiece(newX, newY);
+//		}
+//		else {
+//			//Else the position remains the same for the piece
+//			player.updatePiece(prevX, prevY);
+//		}
 		
 		
 		

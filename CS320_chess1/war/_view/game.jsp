@@ -156,7 +156,7 @@
 				</div>
 		<!--e6-->
 				<div class="div1" id="e6" ondrop="drop(event)" ondragover="allowDrop(event)">
-				<img src="" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)"  width="60" height="60"/>
+				<img src="${image}" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)"  width="60" height="60"/>
 				</div>
 		<!--f6-->
 				<div class="div2" id="f6" ondrop="drop(event)" ondragover="allowDrop(event)">
