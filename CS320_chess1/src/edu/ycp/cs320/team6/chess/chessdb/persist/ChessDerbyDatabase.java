@@ -126,9 +126,9 @@ public class ChessDerbyDatabase{
 					// Retrieve all attributes from piece table
 					stmt = conn.prepareStatement(
 							"select *" +
-							"  from userInfo" +
-							" where userInfo.username = ? " +
-							"   and userInfo.password = ?"
+							"  from users" +
+							" where users.username = ? " +
+							"   and users.password = ?"
 					);
 					stmt.setString(1, username);
 					stmt.setString(2,  password);
@@ -253,8 +253,8 @@ public class ChessDerbyDatabase{
 					stmt1.executeUpdate();
 					
 					stmt2 = conn.prepareStatement(
-							"create table userInfo (" +
-							"	username varchar(70)," +
+							"create table users (" +
+							"	username varchar(40)," +
 							"	password varchar(15)," +
 							"   ranking integer" +
 							")"
@@ -296,16 +296,17 @@ public class ChessDerbyDatabase{
 						insertPiece.setString(3, piece.getHasMoved());
 						insertPiece.setInt(4, piece.getX());
 						insertPiece.setInt(5, piece.getY());
+						
 						insertPiece.addBatch();
 					}
 					insertPiece.executeBatch();
 					
 					//populate the users table
-					insertUser = conn.prepareStatement("insert into userInfo (username, password, ranking) values (?, ?, ?)");
+					insertUser = conn.prepareStatement("insert into users (username, password, ranking) values (?, ?, ?)");
 					for (DBUser user : userList) {
 						insertUser.setString(1, user.getUsername());
 						insertUser.setString(2, user.getPassword());
-						insertUser.setInt(3, user.getRanking());
+						insertUser.setInt(3, user.getRanking()); 
 						insertUser.addBatch();
 					}
 					insertUser.executeBatch();

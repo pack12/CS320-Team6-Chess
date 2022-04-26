@@ -36,7 +36,7 @@ public class InitiateData {
 	
 	public static List<DBUser> getUsers() throws IOException {
 		List<DBUser> userList = new ArrayList<DBUser>();
-		ReadCSV readUsers = new ReadCSV("userInfo.csv");
+		ReadCSV readUsers = new ReadCSV("users.csv");
 		try {
 			 
 			while (true) {
@@ -49,6 +49,7 @@ public class InitiateData {
 				user.setUsername(i.next());
 				user.setPassword(i.next());
 				user.setRanking(Integer.parseInt(i.next()));
+				userList.add(user);
 			}
 			return userList;
 		} finally {

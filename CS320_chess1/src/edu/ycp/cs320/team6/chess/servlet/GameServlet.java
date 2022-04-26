@@ -14,15 +14,20 @@ import edu.ycp.cs320.team6.chess.model.Board;
 public class GameServlet extends HttpServlet{
 	
 private static final long serialVersionUID = 1L;
-Board board = new Board();
+//Board board = new Board();
+
+	
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
 		System.out.println("Game Servlet: doGet");
-		board.addPieceToBoard("Images/Chess_black_pawn.png", 1, 3);
 		
-		req.setAttribute("image", board.getPiece(1, 3));
+		//board.addPieceToBoard("Images/Chess_black_pawn.png", 1, 3);
+		//req.setAttribute("image", board.getPiece(1, 3));
+		
+		
 		req.getRequestDispatcher("/_view/game.jsp").forward(req, resp);
 	}
 	

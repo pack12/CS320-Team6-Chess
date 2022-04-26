@@ -10,25 +10,43 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class DBReturnTests {
-	
-	private ChessDerbyDatabase db;
-	private DBPiece pieceStart;
-	private DBPiece pieceFinish;
-	
-	@Before
-	public void setup() {
-		db = new ChessDerbyDatabase();
-		pieceStart = new DBPiece("Rook", "N", "White", 1, 1);
-		pieceFinish = new DBPiece("Rook", "N", "White", 5, 5);
+
+		private DBPiece piece1;
+		private DBPiece piece2;
+		private DBUser user1;
+		private DBUser user2;
+		private ChessDerbyDatabase db;
+		
+		@Before
+		public void setup() {
+			db = new ChessDerbyDatabase();
+			piece1 = new DBPiece("Rook", "N", "White", 1, 1);
+			piece2 = new DBPiece("Rook", "N", "White", 1, 1);
+			user1 = new DBUser("Bean", "dog", 3000);
+			user2 = new DBUser("John", "RunRunRun", 3);
+		}
+		
+		@Test
+		public void testFindUserByUsernameAndPassword() {
+			DBUser user = db.findUserByUsernameAndPassword("Bean", "dog");
+			DBUser userNull = db.findUserByUsernameAndPassword("Yoddley", "HeeHoo");
+			assertEquals(user.getPassword(), user1.getPassword());
+			assertEquals(user.getRanking(), user1.getRanking());
+			assertEquals(user.getUsername(), user1.getUsername());
+			assertEquals(userNull, null);
+			
+		}
+		@Test
+		public void testFindPieceByPosition() {
+			DBPiece piece11Rook = db.findPieceByPosition(1, 1);
+			DBPiece noPiece = db.findPieceByPosition(5, 5);
+			assertEquals(piece1.getColor(), piece11Rook.getColor());
+			assertEquals(piece1.getType(), piece11Rook.getType());
+			assertEquals(piece1.getX(), piece11Rook.getX());
+			assertEquals(piece1.getY(), piece11Rook.getY());
+			assertEquals(piece1.getHasMoved(), piece11Rook.getHasMoved());
+			assertEquals(null, noPiece);
+		}
+		
 	}
 
-	@Test
-	public void testUpdatePiecePosition() {
-		DBPiece init = db.findPieceByPosition(1, 1);
-		assertEquals(init, pieceStart);
-		db.updatePiecePosition(1, 1, 5, 5);
-		DBPiece finish = db.findPieceByPosition(5, 5);
-		assertEquals(finish, pieceFinish);
-	}
-	
-}
