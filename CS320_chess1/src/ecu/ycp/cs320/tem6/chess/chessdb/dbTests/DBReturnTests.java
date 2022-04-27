@@ -20,8 +20,8 @@ public class DBReturnTests {
 		@Before
 		public void setup() {
 			db = new ChessDerbyDatabase();
-			piece1 = new DBPiece("Rook", "N", "White", 1, 1);
-			piece2 = new DBPiece("Rook", "N", "White", 1, 1);
+			piece1 = new DBPiece("Rook", "N", "White", 1, 1, "N");
+			piece2 = new DBPiece("Rook", "N", "White", 1, 1, "N");
 			user1 = new DBUser("Bean", "dog", 3000);
 			user2 = new DBUser("John", "RunRunRun", 3);
 		}
@@ -45,6 +45,7 @@ public class DBReturnTests {
 			assertEquals(piece1.getX(), piece11Rook.getX());
 			assertEquals(piece1.getY(), piece11Rook.getY());
 			assertEquals(piece1.getHasMoved(), piece11Rook.getHasMoved());
+			assertEquals(piece1.getCaptured(), piece11Rook.getCaptured());
 			assertEquals(null, noPiece);
 		}
 		

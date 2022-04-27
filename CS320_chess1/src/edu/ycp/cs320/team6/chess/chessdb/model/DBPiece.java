@@ -7,17 +7,19 @@ public class DBPiece {
 	private String color;
 	private int x;
 	private int y;
+	private String captured;
 	
 	public DBPiece() {
 		
 	}
 	
-	public DBPiece(String type, String hasMoved, String color, int x, int y) {
+	public DBPiece(String type, String hasMoved, String color, int x, int y, String captured) {
 		this.x = x;
 		this.y = y;
 		this.hasMoved = hasMoved;
 		this.type = type;
 		this.color = color;
+		this.captured = captured;
 	}
 	
 	public void setHasMoved(String info) {
@@ -58,6 +60,14 @@ public class DBPiece {
 	
 	public int getY() {
 		return y;
+	}
+	
+	public void setCaptured(String captured) {
+		this.captured = captured;
+	}
+	
+	public String getCaptured() {
+		return captured;
 	}
 
 }

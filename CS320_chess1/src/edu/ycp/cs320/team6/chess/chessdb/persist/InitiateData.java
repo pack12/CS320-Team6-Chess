@@ -26,6 +26,7 @@ public class InitiateData {
 				piece.setHasMoved(i.next());
 				piece.setX(Integer.parseInt(i.next()));
 				piece.setY(Integer.parseInt(i.next()));
+				piece.setCaptured(i.next());
 				pieceList.add(piece);
 			}
 			return pieceList;
