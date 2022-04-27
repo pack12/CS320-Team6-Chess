@@ -25,7 +25,7 @@ public class DBUpdateTests {
 	@Test
 	public void testUpdatePiecePosition() {
 		DBPiece init = db.findPieceByPosition(1, 1);
-		assertEquals(init, pieceStart);
+		assertEquals(init.getX(), pieceStart.getX());
 		db.updatePiecePosition(1, 1, 5, 5);
 		DBPiece finish = db.findPieceByPosition(5, 5);
 		assertEquals(finish, pieceFinish);

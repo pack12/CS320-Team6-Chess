@@ -97,8 +97,8 @@ public class ChessDerbyDatabase{
 					// Replace the x and y for the initial position with the final position
 					stmt = conn.prepareStatement(
 							"update pieces" +
-							"set pieces.x = ?, pieces.y = ?" +
-							"where pieces.x = ?, pieces.y = ?"
+							" set pieces.x = ?, pieces.y = ?" +
+							" where pieces.x = ? and pieces.y = ?"
 					);
 					stmt.setInt(1, endx);
 					stmt.setInt(2,  endy);
