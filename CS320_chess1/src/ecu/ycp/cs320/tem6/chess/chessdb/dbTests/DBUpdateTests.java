@@ -18,8 +18,8 @@ public class DBUpdateTests {
 	@Before
 	public void setup() {
 		db = new ChessDerbyDatabase();
-		pieceStart = new DBPiece("Rook", "N", "White", 1, 1);
-		pieceFinish = new DBPiece("Rook", "N", "White", 5, 5);
+		pieceStart = new DBPiece("Rook", "N", "White", 1, 1, "N");
+		pieceFinish = new DBPiece("Rook", "N", "White", 5, 5, "N");
 	}
 
 	@Test

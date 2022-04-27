@@ -229,6 +229,7 @@ public class ChessDerbyDatabase{
 		piece.setHasMoved(resultSet.getString(index++));
 		piece.setX(resultSet.getInt(index++));
 		piece.setY(resultSet.getInt(index++));	
+		piece.setCaptured(resultSet.getString(index++));
 	}
 	
 	// will have to replace sql logic
@@ -247,7 +248,8 @@ public class ChessDerbyDatabase{
 						"	color varchar(10)," +
 						"   hasMoved varchar(1)," +
 						"   x integer," +
-						"   y integer" +
+						"   y integer," +
+						"   captured varchar(1)" +
 						")"
 					);	
 					stmt1.executeUpdate();
@@ -289,14 +291,14 @@ public class ChessDerbyDatabase{
 
 				try {
 					//populate pieces table
-					insertPiece = conn.prepareStatement("insert into pieces (type, color, hasmoved, x, y) values (?, ?, ?, ?, ?)");
+					insertPiece = conn.prepareStatement("insert into pieces (type, color, hasmoved, x, y, captured) values (?, ?, ?, ?, ?, ?)");
 					for (DBPiece piece : pieceList) {
 						insertPiece.setString(1, piece.getType());
 						insertPiece.setString(2, piece.getColor());
 						insertPiece.setString(3, piece.getHasMoved());
 						insertPiece.setInt(4, piece.getX());
 						insertPiece.setInt(5, piece.getY());
-						
+						insertPiece.setString(6, piece.getCaptured());
 						insertPiece.addBatch();
 					}
 					insertPiece.executeBatch();
