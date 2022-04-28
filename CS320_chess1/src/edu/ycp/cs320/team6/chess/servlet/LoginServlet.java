@@ -7,11 +7,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import edu.ycp.cs320.team6.chess.chessdb.model.DBUser;
+import edu.ycp.cs320.team6.chess.chessdb.persist.ChessDerbyDatabase;
 import edu.ycp.cs320.team6.chess.model.Login;
 
 public class LoginServlet extends HttpServlet{
 private static final long serialVersionUID = 1L;
-	
+
+
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -25,35 +29,41 @@ private static final long serialVersionUID = 1L;
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		
 		System.out.println("Login Servlet: doPost");
+		DBUser user; 
+		ChessDerbyDatabase db = new ChessDerbyDatabase();
+		
 		
 		Login model = new Login();
 		
 		String errorMessage = null;
 		
-		try {
-			String userName = req.getParameter("username");
-			String passWord = req.getParameter("password");
+		
+		String userName = req.getParameter("username");
+		String passWord = req.getParameter("password");
+		
+		
+		
+		model.setUserName(userName);
+		model.setPassword(passWord);
+		
+		
+		user = db.findUserByUsernameAndPassword(userName, passWord);
+
+		System.out.println("Something!!");
+		
+		if(model.getUserName().equals(user.getUsername()) && model.getPassword().equals(user.getPassword())) {
 			
 			
-			model.setUserName(userName);
-			model.setPassword(passWord);
-			if(model.getUserName().equals("jkettula")) {
-				
-				
-//				resp.sendRedirect("fullmenu");
-				req.setAttribute("username", userName);
-				req.getRequestDispatcher("/_view/fullmenu.jsp").forward(req, resp);
-			}
-			
-			System.out.println(userName +" " + passWord);
-			System.out.println(model.getUserName() + model.getPassword());
-			
-			
-			
-		} catch(Exception e) {
-			errorMessage = "Invalid Username";
+
+			req.getSession().setAttribute("username", userName);
+
+			resp.sendRedirect(req.getContextPath() + "/fullmenu");
 		}
-		//System.out.println(model.getUserName());
+		
+		System.out.println(userName +" " + passWord);
+		System.out.println(model.getUserName() + model.getPassword());
+		
+
 	
 		
 		

@@ -29,6 +29,7 @@ public class DBReturnTests {
 		@Test
 		public void testFindUserByUsernameAndPassword() {
 			DBUser user = db.findUserByUsernameAndPassword("Bean", "dog");
+			System.out.println(user);
 			DBUser userNull = db.findUserByUsernameAndPassword("Yoddley", "HeeHoo");
 			assertEquals(user.getPassword(), user1.getPassword());
 			assertEquals(user.getRanking(), user1.getRanking());
