@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpServlet;
 
 import edu.ycp.cs320.team6.chess.model.FullMenu;
@@ -20,6 +21,13 @@ private static final long serialVersionUID = 1L;
 		
 		
 		System.out.println("FullMenu Servlet: doGet");
+		
+		HttpSession mySession = req.getSession();
+		if(mySession.isNew()) {
+			System.out.println("Client hasn't joined server?");
+		}else {
+			System.out.println("Old nws");
+		}
 //		String username = req.getParameter("username");
 //		System.out.println(username);
 //		System.out.println(model.getUserName());

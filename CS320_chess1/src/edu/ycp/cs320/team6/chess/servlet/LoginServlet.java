@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import edu.ycp.cs320.team6.chess.chessdb.model.DBUser;
 import edu.ycp.cs320.team6.chess.chessdb.persist.ChessDerbyDatabase;
@@ -22,6 +23,12 @@ private static final long serialVersionUID = 1L;
 		
 		System.out.println("Login Servlet: doGet");
 		
+		HttpSession mySession = req.getSession();
+		if(mySession.isNew()) {
+			System.out.println("Client hasn't joined server?");
+		}else {
+			System.out.println("Old nws");
+		}
 		req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
 	}
 
@@ -54,8 +61,9 @@ private static final long serialVersionUID = 1L;
 		if(model.getUserName().equals(user.getUsername()) && model.getPassword().equals(user.getPassword())) {
 			
 			
-
+			System.out.println("test: "+req.getAttribute(userName));
 			req.getSession().setAttribute("username", userName);
+			
 
 			resp.sendRedirect(req.getContextPath() + "/fullmenu");
 		}
