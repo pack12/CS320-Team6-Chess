@@ -41,8 +41,26 @@
 		  text-align: right;
 		}
 		
+		button{
+		border-radius: 10px;
+		background: SandyBrown;
+		}
+		
 		</style>
 		<script>
+		let goBack=false;
+		
+		function back(){
+		
+		goBack=true;
+		document.getElementById('goBack').value = goBack;
+		console.log(goBack);
+		
+		}
+		
+		function forward(){
+		goBack=false;
+		console.log(goBack);}
 		
 		function drag(ev) {
 		  ev.dataTransfer.setData("text", ev.target.id);
@@ -336,8 +354,9 @@
 	<p class="right"> USER 2 </p>
 	</form>
 	</div>
-	
-	
+	<form action="${pageContext.servletContext.contextPath}/fullmenu" method="get">
+	<button onclick="back()" name="goBack" value=${goBack}> Go back</button> <button onclick="forward()"> Go forward </button> </form>
+	<p> ${goBack}</p>
 	
 	
 	</body>

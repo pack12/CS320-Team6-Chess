@@ -36,6 +36,10 @@ private int timesVisit = 0;
 			req.getSession().setAttribute("playerColor", "White");
 		}
 		
+		
+		req.setAttribute("goBack", false);
+		System.out.println(req.getAttribute("goBack"));
+		
 		System.out.println(username + " is" + req.getSession().getAttribute("playerColor") );
 		req.getRequestDispatcher("/_view/game.jsp").forward(req, resp);
 	}
@@ -49,6 +53,9 @@ private int timesVisit = 0;
 		String to = req.getParameter("end");
 		String filePath = req.getParameter("imgsrc");
 		
+		String goBack = req.getParameter("goBack");
+		System.out.println("goback: "+goBack);
+//		boolean goBack = getBoolFromParam(req.getParameter("goBack"));
 		
 		if(from != "$(start)") {
 		System.out.println(from);
@@ -59,11 +66,16 @@ private int timesVisit = 0;
 		}
 		
 		
-		System.out.println(filePath);
+//		System.out.println(filePath);
 //		req.setAttribute("image", );
 		
 		//Piece piece = new Piece(xPosPiece, yPosPiece, hasMoved);
 		//controller.setModel(piece);
+		
+		
+		
+		
+		
 		
 		// Forward to view to render the result HTML document
 				req.getRequestDispatcher("/_view/game.jsp").forward(req, resp);
