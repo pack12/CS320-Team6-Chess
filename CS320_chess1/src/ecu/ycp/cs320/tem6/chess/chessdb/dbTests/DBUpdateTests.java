@@ -28,7 +28,8 @@ public class DBUpdateTests {
 		assertEquals(init.getX(), pieceStart.getX());
 		db.updatePiecePosition(1, 1, 5, 5);
 		DBPiece finish = db.findPieceByPosition(5, 5);
-		assertEquals(finish, pieceFinish);
+		assertEquals(finish.getX(), pieceFinish.getX());
+		assertEquals(finish.getY(), pieceFinish.getY());
 	}
 	
 }

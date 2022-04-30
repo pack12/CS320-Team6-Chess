@@ -87,11 +87,12 @@ public class ChessDerbyDatabase{
 	
 	
 	
-	public Boolean updatePiecePosition(final int startx, final int starty, final int endx, final int endy) {
-		return executeTransaction(new Transaction<Boolean>() {
+	public void updatePiecePosition(final int startx, final int starty, final int endx, final int endy) {
+		executeTransaction(new Transaction<Boolean>() {
 			@Override
 			public Boolean execute(Connection conn) throws SQLException {
 				PreparedStatement stmt = null;
+				
 				
 				try {
 					// Replace the x and y for the initial position with the final position
@@ -101,11 +102,11 @@ public class ChessDerbyDatabase{
 							" where pieces.x = ? and pieces.y = ?"
 					);
 					stmt.setInt(1, endx);
-					stmt.setInt(2,  endy);
+					stmt.setInt(2, endy);
 					stmt.setInt(3, startx);
-					stmt.setInt(4,  starty);
+					stmt.setInt(4, starty);
 					
-					stmt.executeQuery();
+					stmt.execute();
 					
 					return true;
 				} finally {
@@ -182,8 +183,11 @@ public class ChessDerbyDatabase{
 			
 			while (!success && numAttempts < MAX_ATTEMPTS) {
 				try {
+					System.out.print("AAA");
 					result = txn.execute(conn);
+					System.out.print("BBB");
 					conn.commit();
+					
 					success = true;
 				} catch (SQLException e) {
 					if (e.getSQLState() != null && e.getSQLState().equals("41000")) {
