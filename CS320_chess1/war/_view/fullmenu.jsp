@@ -26,7 +26,7 @@
 		<br>
           
          
-          <a href="/chess/game">
+          <a href="/chess/game" style="text-decoration:none">
 		<input type="Submit" value="Start Matchmaking" style="height=50px; width=300px;">
 		</a><br>
 		<input type= "Submit" value="Friends" style="height=50px; width=200px;"/>
@@ -34,6 +34,6 @@
 		  <a href="/chess/credits">
 		<input type="Submit" value="Credits" style="height=50px; width=200px;"/></a><br>
 		<a href="/chess/games">
-        <input type="Submit" value="Games" style=" height=50px; width=200px;"/> </a>
+        <input type="Submit" value="Games" style=" height=5px; width=200px;"/> </a>
 	</body>
 </html>

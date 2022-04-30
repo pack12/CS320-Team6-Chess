@@ -6,7 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 
 import edu.ycp.cs320.team6.chess.controller.Game;
 import edu.ycp.cs320.team6.chess.model.Piece;
@@ -15,7 +15,7 @@ public class GameServlet extends HttpServlet{
 	
 private static final long serialVersionUID = 1L;
 //Board board = new Board();
-
+private int timesVisit = 0;
 	
 
 	@Override
@@ -26,8 +26,17 @@ private static final long serialVersionUID = 1L;
 		
 		//board.addPieceToBoard("Images/Chess_black_pawn.png", 1, 3);
 		//req.setAttribute("image", board.getPiece(1, 3));
+		String username  = (String) req.getSession().getAttribute("username");
+		System.out.println("Who is this? " + username);
+		timesVisit+=1;
 		
+		if (timesVisit==1) {
+			req.getSession().setAttribute("playerColor", "Black");
+		}else if(timesVisit==2) {
+			req.getSession().setAttribute("playerColor", "White");
+		}
 		
+		System.out.println(username + " is" + req.getSession().getAttribute("playerColor") );
 		req.getRequestDispatcher("/_view/game.jsp").forward(req, resp);
 	}
 	
