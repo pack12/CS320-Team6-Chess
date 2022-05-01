@@ -85,6 +85,82 @@ public class ChessDerbyDatabase{
 		});
 	}
 	
+	public void updateCapturedByPosition(final int x, final int y, final String cap) {
+		executeTransaction(new Transaction<Boolean>() {
+			@Override
+			public Boolean execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				
+				
+				try {
+					// Replace the x and y for the initial position with the final position
+					stmt = conn.prepareStatement(
+							"update pieces" +
+							" set pieces.captured = ? " +
+							" where pieces.x = ? and pieces.y = ?"
+					);
+					stmt.setString(1, cap);
+					stmt.setInt(2, x);
+					stmt.setInt(3, y);
+					
+					stmt.execute();
+					
+					return true;
+				} finally {
+					DB_Util.closeQuietly(stmt);
+				}
+			}
+		});
+	}
+	
+	public ArrayList<DBPiece> findCaptured(final String color){
+		return executeTransaction(new Transaction<ArrayList<DBPiece>>() {
+			@Override
+			public ArrayList<DBPiece> execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				ResultSet resultSet = null;
+				
+				try {
+					// Retrieve all attributes from piece table
+					stmt = conn.prepareStatement(
+							"select pieces.*" +
+							"  from pieces" +
+							" where pieces.captured = 'Y' and pieces.color = ?"
+					);
+						stmt.setString(1, color);
+					
+					ArrayList<DBPiece> result = new ArrayList<DBPiece>();
+					
+					resultSet = stmt.executeQuery();
+					
+					// for testing that a result was returned
+					Boolean found = false;
+					
+					while (resultSet.next()) {
+						found = true;
+						
+						DBPiece add = new DBPiece();
+						
+						loadPiece(add, resultSet, 1);
+						
+						result.add(add);
+					
+					}
+					
+					// check if the title was found
+					if (!found) {
+						System.out.println("There are no captured pieces");
+						result = null;
+					}
+					
+					return result;
+				} finally {
+					DB_Util.closeQuietly(resultSet);
+					DB_Util.closeQuietly(stmt);
+				}
+			}
+		});
+	}
 	
 	
 	public void updatePiecePosition(final int startx, final int starty, final int endx, final int endy) {
@@ -183,9 +259,9 @@ public class ChessDerbyDatabase{
 			
 			while (!success && numAttempts < MAX_ATTEMPTS) {
 				try {
-					System.out.print("AAA");
+					
 					result = txn.execute(conn);
-					System.out.print("BBB");
+				
 					conn.commit();
 					
 					success = true;

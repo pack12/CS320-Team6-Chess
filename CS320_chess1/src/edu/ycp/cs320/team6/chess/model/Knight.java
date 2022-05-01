@@ -2,8 +2,8 @@ package edu.ycp.cs320.team6.chess.model;
 
 public class Knight extends Piece{
 	
-	public Knight(int X, int Y, boolean hasMoved) {
-		super(X, Y, hasMoved);
+	public Knight(int X, int Y, boolean hasMoved, String color) {
+		super(X, Y, hasMoved, color);
 		
 	}
 	

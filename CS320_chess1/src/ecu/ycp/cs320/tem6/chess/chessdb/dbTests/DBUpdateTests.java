@@ -6,6 +6,8 @@ import edu.ycp.cs320.team6.chess.chessdb.model.DBUser;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -32,4 +34,23 @@ public class DBUpdateTests {
 		assertEquals(finish.getY(), pieceFinish.getY());
 	}
 	
+	@Test
+	public void testUpdateCaptured() {
+		db.updateCapturedByPosition(2, 2, "Y");
+		DBPiece check1 = db.findPieceByPosition(2, 2);
+		assertEquals(check1.getCaptured(), "Y");
+		db.updateCapturedByPosition(8, 8, "Y");
+		DBPiece check2 = db.findPieceByPosition(8, 8);
+		assertEquals(check2.getCaptured(), "Y");
+	}
+	
+	 @Test
+	public void testCapturedPieces() {
+		ArrayList<DBPiece> whitecap = db.findCaptured("White");			
+		assertEquals(whitecap.get(0).getCaptured(), "Y");
+		assertEquals(whitecap.get(0).getColor(), "White");
+		ArrayList<DBPiece> blackcap = db.findCaptured("Black");			
+		assertEquals(blackcap.get(0).getCaptured(), "Y");
+		assertEquals(blackcap.get(0).getColor(), "Black");
+	} 
 }

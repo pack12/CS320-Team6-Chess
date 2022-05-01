@@ -3,6 +3,8 @@ package ecu.ycp.cs320.tem6.chess.chessdb.dbTests;
 import edu.ycp.cs320.team6.chess.chessdb.persist.ChessDerbyDatabase;
 import edu.ycp.cs320.team6.chess.chessdb.model.DBPiece;
 import edu.ycp.cs320.team6.chess.chessdb.model.DBUser;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -50,5 +52,12 @@ public class DBReturnTests {
 			assertEquals(null, noPiece);
 		}
 		
+		@Test
+		public void testWhiteCapturedPieces() {
+			ArrayList<DBPiece> whitecap = db.findCaptured("white");			
+			assertEquals(whitecap, null);
+			ArrayList<DBPiece> blackcap = db.findCaptured("black");			
+			assertEquals(blackcap, null);
+		}
 	}
 

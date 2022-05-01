@@ -4,8 +4,8 @@ public class Pawn extends Piece{
 	
 	private boolean hasLeaped;
 	
-	public Pawn(int X, int Y, boolean hasMoved, boolean hasLeaped) {
-		super(X, Y, hasMoved);
+	public Pawn(int X, int Y, boolean hasMoved, boolean hasLeaped, String color) {
+		super(X, Y, hasMoved, color);
 		this.hasLeaped = false;
 	}
 	
