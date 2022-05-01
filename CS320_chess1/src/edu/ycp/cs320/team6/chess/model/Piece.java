@@ -17,6 +17,7 @@ public abstract class Piece{
 		this.color = color;
 	}
 	
+	
 	public void move(int destinationX, int destinationY){
 		this.X = destinationX;
 		this.Y = destinationY;

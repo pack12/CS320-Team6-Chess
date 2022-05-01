@@ -1,6 +1,9 @@
 package edu.ycp.cs320.team6.chess.model;
 
-public class Pawn extends Piece{
+import edu.ycp.cs320.team6.chess.chessdb.model.DBPiece;
+import edu.ycp.cs320.team6.chess.chessdb.persist.ChessDerbyDatabase;
+
+public class Pawn extends Piece implements PieceInterface{
 	
 	private boolean hasLeaped;
 	
@@ -12,7 +15,7 @@ public class Pawn extends Piece{
 	public boolean sees(int lookX, int lookY) {
 		if (abs(X - lookX) == 1 && (lookY - Y) == 1) {
 			return true;
-		}else if(abs(X - lookX) == 0 && (lookY - Y) == 1 || abs(X - lookX) == 0 && (lookY - Y) == 2 ) {
+		}else if(abs(X - lookX) == 0 && (lookY - Y) == 1 || abs(X - lookX) == 0 && (lookY - Y) == 2 && !hasLeaped) {
 			return true;
 		}
 		else {
@@ -20,8 +23,45 @@ public class Pawn extends Piece{
 		}		
 	}
 	
+	@Override
+	public boolean checkPathOpen(int lookX, int lookY) {
+		ChessDerbyDatabase db = new ChessDerbyDatabase();
+		DBPiece checktake = db.findPieceByPosition(lookX, lookY);
+		
+		int incrementX = lookX-X;
+		int incrementY = lookY-Y;
+		
+		if(incrementY == 0) {
+		incrementX = 1;
+		int i=X+incrementX; 
+		while (i!=lookX){
+			DBPiece check = db.findPieceByPosition(i, lookY);
+			if (check != null && check.getCaptured().equals("N")) {
+				return false;
+			}
+			i=i+incrementX;
+		}
+		if (checktake == null || checktake != null && checktake.getCaptured() == "Y") {
+			return true;
+		} 
+		else {
+				return false;
+			}
+		}
+		else {
+			if(checktake != null && !checktake.getColor().equals(color)) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+	}
+	
 	public boolean validateMove(int Xgoing, int Ygoing, int[][] board) {
 		return true;
 	}
+
+	
 	
 }

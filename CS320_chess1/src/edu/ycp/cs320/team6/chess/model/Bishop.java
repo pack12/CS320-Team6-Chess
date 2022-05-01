@@ -2,7 +2,7 @@ package edu.ycp.cs320.team6.chess.model;
 import edu.ycp.cs320.team6.chess.chessdb.persist.ChessDerbyDatabase;
 import edu.ycp.cs320.team6.chess.chessdb.model.DBPiece;
 
-public class Bishop extends Piece{
+public class Bishop extends Piece implements PieceInterface{
 	
 	public Bishop(int X, int Y, boolean hasMoved, String color) {
 		super(X, Y, hasMoved, color);
@@ -25,8 +25,12 @@ public class Bishop extends Piece{
 		int incrementX = lookX-X;
 		int incrementY = lookY-Y;
 		
+		if(incrementX!=0) {
 		incrementX = incrementX/(abs(incrementX));
+		}
+		if(incrementY!=0) {
 		incrementY = incrementY/(abs(incrementY));
+		}
 		
 		int i=X+incrementX;
 		int j=Y+incrementY; 
@@ -35,7 +39,6 @@ public class Bishop extends Piece{
 			DBPiece check = db.findPieceByPosition(i, j);
 			
 			if (check != null && check.getCaptured().equals("N")) {
-				System.out.print("onTheWay");
 				return false;
 			}
 			i=i+incrementX;

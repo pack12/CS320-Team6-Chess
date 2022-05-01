@@ -1,6 +1,10 @@
 package edu.ycp.cs320.team6.chess.model;
 
-public class Knight extends Piece{
+import edu.ycp.cs320.team6.chess.chessdb.model.DBPiece;
+import edu.ycp.cs320.team6.chess.chessdb.persist.ChessDerbyDatabase;
+
+
+public class Knight extends Piece implements PieceInterface{
 	
 	public Knight(int X, int Y, boolean hasMoved, String color) {
 		super(X, Y, hasMoved, color);
@@ -17,6 +21,22 @@ public class Knight extends Piece{
 		else {
 			return false;
 		}		
+	}
+	
+	public boolean checkPathOpen(int lookX, int lookY) {
+		ChessDerbyDatabase db = new ChessDerbyDatabase();
+		DBPiece checktake = db.findPieceByPosition(lookX, lookY);
+		if (checktake == null || checktake != null && checktake.getCaptured() == "Y") {
+			return true;
+		} 
+		else {
+			if (checktake.getColor().equals(color)) {
+				return false;
+			}
+			else{
+				return true;
+			}
+		}
 	}
 	
 	public boolean validateMove(int Xgoing, int Ygoing, int[][] board) {

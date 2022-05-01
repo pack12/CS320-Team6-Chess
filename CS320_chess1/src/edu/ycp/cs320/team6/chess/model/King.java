@@ -1,6 +1,9 @@
 package edu.ycp.cs320.team6.chess.model;
 
-public class King extends Piece{
+import edu.ycp.cs320.team6.chess.chessdb.model.DBPiece;
+import edu.ycp.cs320.team6.chess.chessdb.persist.ChessDerbyDatabase;
+
+public class King extends Piece implements PieceInterface{
 	
 	
 	public King(int X, int Y, boolean hasMoved, String color) {
@@ -21,5 +24,22 @@ public class King extends Piece{
 	public boolean validateMove(int Xgoing, int Ygoing, int[][] board) {
 		return true;
 	}
+
 	
+	public boolean checkPathOpen(int lookX, int lookY) {
+		
+			ChessDerbyDatabase db = new ChessDerbyDatabase();
+			DBPiece checktake = db.findPieceByPosition(lookX, lookY);
+			if (checktake == null || checktake != null && checktake.getCaptured() == "Y") {
+				return true;
+			} 
+			else {
+				if (checktake.getColor().equals(color)) {
+					return false;
+				}
+				else{
+					return true;
+				}
+			}
+		}
 }
