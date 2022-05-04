@@ -1,5 +1,6 @@
 package edu.ycp.cs320.team6.chess.model;
 
+
 //model class for each piece
 
 public abstract class Piece{
@@ -39,6 +40,7 @@ public abstract class Piece{
 	public boolean getHasMoved() {
 		return this.hasMoved;
 	}
+	
 	
 	public int abs(int i) {
 		if (i<0) {

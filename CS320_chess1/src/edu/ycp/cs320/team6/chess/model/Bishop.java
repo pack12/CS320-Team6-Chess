@@ -58,9 +58,7 @@ public class Bishop extends Piece implements PieceInterface{
 		}
 	}
 	
-	public boolean validateMove(int Xgoing, int Ygoing, int[][] board) {
-		return true;
-	} 
+	
 	 
 	
 }
