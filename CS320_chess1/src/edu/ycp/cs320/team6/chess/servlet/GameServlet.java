@@ -16,7 +16,7 @@ public class GameServlet extends HttpServlet{
 private static final long serialVersionUID = 1L;
 //Board board = new Board();
 private int timesVisit = 0;
-	
+private boolean visit;	
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -30,15 +30,16 @@ private int timesVisit = 0;
 		System.out.println("Who is this? " + username);
 		timesVisit+=1;
 		
-		if (timesVisit==1) {
+		
+		
+		if (timesVisit==1 && req.getSession().getAttribute("playerColor") == null) {
 			req.getSession().setAttribute("playerColor", "Black");
-		}else if(timesVisit==2) {
+		}else if(timesVisit==2 && req.getSession().getAttribute("playerColor") == null) {
 			req.getSession().setAttribute("playerColor", "White");
 		}
 		
 		
-		req.setAttribute("goBack", false);
-		System.out.println(req.getAttribute("goBack"));
+		
 		
 		System.out.println(username + " is" + req.getSession().getAttribute("playerColor") );
 		req.getRequestDispatcher("/_view/game.jsp").forward(req, resp);
@@ -53,9 +54,8 @@ private int timesVisit = 0;
 		String to = req.getParameter("end");
 		String filePath = req.getParameter("imgsrc");
 		
-		String goBack = req.getParameter("goBack");
-		System.out.println("goback: "+goBack);
-//		boolean goBack = getBoolFromParam(req.getParameter("goBack"));
+
+		System.out.println("donde"+req.getSession().getAttribute("playerColor"));
 		
 		if(from != "$(start)") {
 		System.out.println(from);
