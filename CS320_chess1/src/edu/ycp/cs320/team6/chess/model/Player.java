@@ -4,10 +4,13 @@ import java.util.ArrayList;
 
 import edu.ycp.cs320.team6.chess.model.Piece;
 
-public class Player{
+public abstract class Player{
 	private Piece[] piece;
 	private Piece playerPiece;
 	private ArrayList<Piece> offBoard;
+	private String userName;
+	private String color;
+	private int numGames;
 	
 	public Player(){
 		piece = new Piece[16];
@@ -60,4 +63,31 @@ public class Player{
 		boolean hasPieceMoved = playerPiece.hasMoved;
 		
 	}
+	
+	
+	
+	public void setColor(String color) {
+		this.color = color;
+	}
+	
+	public String getColor() {
+		return color;
+	}
+	
+	public void setNumGames(int numgames) {
+		this.numGames = numgames;
+	}
+	
+	public int getGames() {
+		return numGames;
+	}
+	
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	
+	public String getUserName() {
+		return this.userName;
+	}
+	
 }
