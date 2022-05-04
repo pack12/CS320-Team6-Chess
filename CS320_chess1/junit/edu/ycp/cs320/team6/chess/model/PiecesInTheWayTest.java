@@ -2,12 +2,9 @@ package edu.ycp.cs320.team6.chess.model;
 
 import static org.junit.Assert.*;
 import edu.ycp.cs320.team6.chess.chessdb.persist.ChessDerbyDatabase;
-import edu.ycp.cs320.team6.chess.chessdb.model.DBPiece;
-import edu.ycp.cs320.team6.chess.chessdb.model.DBUser;
-import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
-import edu.ycp.cs320.team6.chess.model.*;
+
 
 public class PiecesInTheWayTest {
 	

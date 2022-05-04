@@ -13,12 +13,13 @@ public class Pawn extends Piece implements PieceInterface{
 	}
 	
 	public boolean sees(int lookX, int lookY) {
-		if (abs(X - lookX) == 1 && (lookY - Y) == 1) {
+		if ((lookX-X) == 1 && abs(lookY - Y) == 1) {
 			return true;
-		}else if(abs(X - lookX) == 0 && (lookY - Y) == 1 || abs(X - lookX) == 0 && (lookY - Y) == 2 && !hasLeaped) {
+		}else if(abs(X - lookX) == 1 && (lookY - Y) == 0 || abs(X - lookX) == 2 && (lookY - Y) == 0 && !hasLeaped) {
 			return true;
 		}
 		else {
+			System.out.print("here");
 			return false;
 		}		
 	}
@@ -57,11 +58,5 @@ public class Pawn extends Piece implements PieceInterface{
 			}
 		}
 	}
-	
-	public boolean validateMove(int Xgoing, int Ygoing, int[][] board) {
-		return true;
-	}
-
-	
 	
 }

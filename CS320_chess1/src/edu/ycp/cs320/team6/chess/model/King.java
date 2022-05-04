@@ -21,9 +21,7 @@ public class King extends Piece implements PieceInterface{
 		}		
 	}
 	
-	public boolean validateMove(int Xgoing, int Ygoing, int[][] board) {
-		return true;
-	}
+	
 
 	
 	public boolean checkPathOpen(int lookX, int lookY) {
