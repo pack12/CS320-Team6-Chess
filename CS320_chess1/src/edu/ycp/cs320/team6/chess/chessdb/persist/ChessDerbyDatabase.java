@@ -32,7 +32,7 @@ public class ChessDerbyDatabase{
 	
 	
 	
-
+	
 	
 	
 	
@@ -161,6 +161,56 @@ public class ChessDerbyDatabase{
 			}
 		});
 	}
+	
+	public ArrayList<DBPiece> findUnCaptured(final String color){
+		return executeTransaction(new Transaction<ArrayList<DBPiece>>() {
+			@Override
+			public ArrayList<DBPiece> execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				ResultSet resultSet = null;
+				
+				try {
+					// Retrieve all attributes from piece table
+					stmt = conn.prepareStatement(
+							"select pieces.*" +
+							"  from pieces" +
+							" where pieces.captured = 'N' and pieces.color = ?"
+					);
+						stmt.setString(1, color);
+					
+					ArrayList<DBPiece> result = new ArrayList<DBPiece>();
+					
+					resultSet = stmt.executeQuery();
+					
+					// for testing that a result was returned
+					Boolean found = false;
+					
+					while (resultSet.next()) {
+						found = true;
+						
+						DBPiece add = new DBPiece();
+						
+						loadPiece(add, resultSet, 1);
+						
+						result.add(add);
+					
+					}
+					
+					// check if the title was found
+					if (!found) {
+						System.out.println("There are no uncaptured pieces");
+						result = null;
+					}
+					
+					return result;
+				} finally {
+					DB_Util.closeQuietly(resultSet);
+					DB_Util.closeQuietly(stmt);
+				}
+			}
+		});
+	}
+	
 	
 	
 	public void updatePiecePosition(final int startx, final int starty, final int endx, final int endy) {

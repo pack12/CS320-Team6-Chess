@@ -67,6 +67,10 @@
 		  var start = event.target.parentNode.getAttribute("id");
 		  document.getElementById("startLoc").value = start;
 		  
+		  <!--
+		  var image = event.target.parentNode.get
+		  document.getElementById("imgsrc").value = image 
+		  -->
 		 
 		}
 		
@@ -79,6 +83,8 @@
 		function drop(ev) {
 		  event.preventDefault();
 		  document.getElementById("submitForm").submit();
+		  
+		  
 		}
 		</script>
 	</head>
@@ -89,10 +95,11 @@
 			<form id="submitForm"/chess/game" name="chess" method="post">
 				<input type="hidden" id="startLoc" name="start" value="$(start)" />
 				<input type="hidden" id="endLoc" name="end" value="$(end)" />
+				<input type="hidden" id="imgsrc" name="img" value="${image}" />
 				<div class="capturebox"></div><br> 
 		<!--a8-->
 				<div class="div1" id="a8" ondrop="drop(event)" ondragover="allowDrop(event)">
-					<img src="Images/Chess_black_rook.png" alt="Black Queen" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="bKnight1" width="60" height="60"/>
+					<img src="Images/Chess_black_rook.png" alt="Black Queen" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="bRook1" width="60" height="60"/>
 				</div>
 		<!--b8-->
 				<div class="div2" id="b8" ondrop="drop(event)" ondragover="allowDrop(event)">
@@ -127,7 +134,7 @@
 					<img src="Images/Chess_black_pawn.png" alt="Black Queen" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="bPawn1" width="60" height="60"/>
 				</div>
 		<!--b7-->
-				<div class="div1" id="a=b7" ondrop="drop(event)" ondragover="allowDrop(event)">
+				<div class="div1" id="b7" ondrop="drop(event)" ondragover="allowDrop(event)">
 					<img src="Images/Chess_black_pawn.png" alt="Black Queen" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="bPawn2" width="60" height="60"/>
 				</div>
 		<!--c7-->
@@ -157,7 +164,7 @@
 		<br>
 		<!--a6-->
 				<div class="div1" id="a6" ondrop="drop(event)" ondragover="allowDrop(event)">
-				<img src="" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)"  width="60" height="60"/>
+				<img src="${image}" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)"  width="60" height="60"/>
 				</div>
 				
 		<!--b6-->
