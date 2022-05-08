@@ -18,6 +18,13 @@ public abstract class Piece{
 		this.color = color;
 	}
 	
+	public Piece() {
+		this.X = 0;
+		this.Y = 0;
+		this.hasMoved = false;
+		this.color = "White";
+	}
+	
 	
 	public void move(int destinationX, int destinationY){
 		this.X = destinationX;
