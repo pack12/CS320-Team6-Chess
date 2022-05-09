@@ -47,33 +47,39 @@ public class Board{
 		while(inputFile.hasNext()) {
 			String line = inputFile.nextLine();
 			
-			if(row ==8) {
+			if(col ==8) {
 				break;
 			}
-			System.out.println("row:"+row+" "+ "col:" + col+ line);
+//			System.out.println("row:"+row+" "+ "col:" + col+ line);
 			if(line.equals("")) {
 				line = inputFile.nextLine();
-				System.out.println("This is the line that should be skipped"+ line);
-				System.out.println("row:"+row+" "+ "col:" + col+ line);
+//				System.out.println("This is the line that should be skipped"+ line);
+//				System.out.println("row:"+row+" "+ "col:" + col+ line);
 			}
 			board[row][col] = line;
 			
-			col++;
+			row++;
 			
-			if(col == 8) {
+			if(row == 8) {
 
-				col=0;
-				row++;
+				row=0;
+				col++;
 				
-				if(row==2) {
-					row=6;
-					col=0;
+				if(col==2) {
+					//6
+					row=0;
+					col=6;
 				}
 			}
 			
 		}
 
-		System.out.println(board);
+//		System.out.println("BOARSEFSFSDFSDFDD"+board);
+		for(int x=0; x<board.length; x++) {
+			for(int y=0; y<board.length; y++) {
+				System.out.println("X: " + x + "Y:" + y + "SQUARESSS: " + getBoardImage(x, y));
+			}
+		}
 		
 	}
 	
