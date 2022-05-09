@@ -20,7 +20,6 @@ public class GameValidateTesting {
 	
 	@Test
 	public void testValidateCompletely() {
-		assertEquals(true, game.validateCheck(3, 3, 4, 5));
-		assertEquals(true, game.validateCheck(1, 2, 1, 3));
+		assertEquals(true, game.validateCheck(2, 7, 3, 8));
 	}
 }

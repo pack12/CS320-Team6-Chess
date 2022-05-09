@@ -49,7 +49,7 @@ public class ChessDerbyDatabase{
 							"select pieces.*" +
 							"  from pieces" +
 							" where pieces.x = ? " +
-							"   and pieces.y = ?"
+							"   and pieces.y = ? and pieces.captured = 'N'"
 					);
 					stmt.setInt(1, x);
 					stmt.setInt(2,  y);
