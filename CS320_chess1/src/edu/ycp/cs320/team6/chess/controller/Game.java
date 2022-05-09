@@ -7,6 +7,7 @@ import edu.ycp.cs320.team6.chess.model.Board;
 import edu.ycp.cs320.team6.chess.model.Login;
 import edu.ycp.cs320.team6.chess.chessdb.persist.ChessDerbyDatabase;
 import edu.ycp.cs320.team6.chess.chessdb.model.DBPiece;
+import java.util.ArrayList;
 
 public class Game{
 	private Board board;
@@ -20,6 +21,7 @@ public class Game{
 	
 	public Game() {
 		board = new Board();
+		db = new ChessDerbyDatabase();
 	}
 	
 	
@@ -35,9 +37,12 @@ public class Game{
 		this.opponent = opponent;
 	}
 	
-	public boolean validateMove(int prevX, int prevY, int newX, int newY) {
+	
+	public boolean validateEach(int prevX, int prevY, int newX, int newY) {
 		
-		DBPiece translator = db.findPieceByPosition(prevX, prevY);
+		DBPiece translator = new DBPiece();
+		translator = db.findPieceByPosition(prevX, prevY);
+		
 		if(translator == null) {
 			return false;
 		}
@@ -62,6 +67,7 @@ public class Game{
 		
 		Piece piece = new Pawn(translator.getX(), translator.getY(), move, leap, translator.getColor());
 		
+		
 		if(type.equals("Pawn")) {
 			
 		}
@@ -83,12 +89,61 @@ public class Game{
 		
 		
 		
+		System.out.print(piece.getClass().toString());
 		
-		
-		
+		if (!piece.validateMove(newX, newY)) {
+			return false;
+		}
+		else {
+			db.updateCapturedByPosition(newX, newY, "T");
+			db.updatePiecePosition(prevX, prevY, newX, newY);
+		}
 		
 		
 		return true;
+	}
+	
+	public boolean validateCheck(int oX, int oY, int nX, int nY) {
+		
+		if(!validateEach(oX, oY, nX, nY)) {
+			System.out.print("first ret false");
+			return false;
+		}
+		
+		String color = new String();
+		
+		if(db.findColorByPosition(oX, oY) == "White") {
+			color = "Black";
+		}
+		else {
+			color = "White";
+		}
+		
+		DBPiece king = db.findKingByColor(db.findColorByPosition(oX, oY));
+		
+		ArrayList<DBPiece> cycle = db.findUnCaptured(color);
+		
+		Boolean end = true;
+		Boolean endChanger;
+		
+		for(DBPiece each : cycle) {			
+			endChanger = validateEach(each.getX(), each.getY(), king.getX(), king.getY());
+			if(endChanger) {
+				end = false;
+			}
+		}
+		
+		if(!end) {
+			db.updatePiecePosition(nX, nY, oX, oY);
+			db.undoTempCaptured();
+		}
+		else {
+			db.finalizeTemp();
+		}
+		
+		
+		System.out.print("end ret");
+		return end;
 	}
 	
 	

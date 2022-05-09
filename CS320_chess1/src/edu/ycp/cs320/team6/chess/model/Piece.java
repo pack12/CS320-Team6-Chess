@@ -3,7 +3,7 @@ package edu.ycp.cs320.team6.chess.model;
 
 //model class for each piece
 
-public abstract class Piece{
+public abstract class Piece implements PieceInterface{
 
 	protected int X;
 	protected int Y;

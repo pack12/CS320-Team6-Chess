@@ -85,6 +85,101 @@ public class ChessDerbyDatabase{
 		});
 	}
 	
+	public DBPiece findKingByColor(final String color) {
+		return executeTransaction(new Transaction<DBPiece>() {
+			@Override
+			public DBPiece execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				ResultSet resultSet = null;
+				
+				try {
+					// Retrieve all attributes from piece table
+					stmt = conn.prepareStatement(
+							"select pieces.*" +
+							"  from pieces" +
+							" where pieces.type = 'King'" +
+							"   and pieces.color = ?"
+					);
+					stmt.setString(1, color);
+					
+					
+					DBPiece result = new DBPiece();
+					
+					resultSet = stmt.executeQuery();
+					
+					// for testing that a result was returned
+
+					
+					while (resultSet.next()) {						
+						// load piece into result
+						// retrieve attributes from resultSet starting with index 1
+						loadPiece(result, resultSet, 1);
+					}
+					
+					// check if the title was found
+
+					
+					return result;
+
+				} finally {
+					DB_Util.closeQuietly(resultSet);
+					DB_Util.closeQuietly(stmt);
+				}
+			}
+		});
+	}
+	
+	public String findColorByPosition(final int x, final int y) {
+		return executeTransaction(new Transaction<String>() {
+			@Override
+			public String execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				ResultSet resultSet = null;
+				
+				try {
+					// Retrieve all attributes from piece table
+					stmt = conn.prepareStatement(
+							"select pieces.*" +
+							"  from pieces" +
+							" where pieces.x = ? " +
+							"   and pieces.y = ?"
+					);
+					stmt.setInt(1, x);
+					stmt.setInt(2,  y);
+					
+					DBPiece result = new DBPiece();
+					
+					resultSet = stmt.executeQuery();
+					
+					// for testing that a result was returned
+					Boolean found = false;
+					
+					while (resultSet.next()) {
+						found = true;
+						
+						// load piece into result
+						// retrieve attributes from resultSet starting with index 1
+						loadPiece(result, resultSet, 1);
+					
+					}
+					
+					String string = result.getColor();
+					
+					// check if the title was found
+					if (!found) {
+						System.out.println("There is no piece at <" + x + "> and <" + y + ">");
+						result = null;
+					}
+					
+					return string;
+				} finally {
+					DB_Util.closeQuietly(resultSet);
+					DB_Util.closeQuietly(stmt);
+				}
+			}
+		});
+	}
+	
 	public void updateCapturedByPosition(final int x, final int y, final String cap) {
 		executeTransaction(new Transaction<Boolean>() {
 			@Override
@@ -102,6 +197,58 @@ public class ChessDerbyDatabase{
 					stmt.setString(1, cap);
 					stmt.setInt(2, x);
 					stmt.setInt(3, y);
+					
+					stmt.execute();
+					
+					return true;
+				} finally {
+					DB_Util.closeQuietly(stmt);
+				}
+			}
+		});
+	}
+	
+	public void undoTempCaptured() {
+		executeTransaction(new Transaction<Boolean>() {
+			@Override
+			public Boolean execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				
+				
+				try {
+					// Replace the x and y for the initial position with the final position
+					stmt = conn.prepareStatement(
+							"update pieces" +
+							" set pieces.captured = 'N'" +
+							" where pieces.captured = 'T'"
+					);
+					
+					
+					stmt.execute();
+					
+					return true;
+				} finally {
+					DB_Util.closeQuietly(stmt);
+				}
+			}
+		});
+	}
+	
+	public void finalizeTemp() {
+		executeTransaction(new Transaction<Boolean>() {
+			@Override
+			public Boolean execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				
+				
+				try {
+					// Replace the x and y for the initial position with the final position
+					stmt = conn.prepareStatement(
+							"update pieces" +
+							" set pieces.captured = 'Y'" +
+							" where pieces.captured = 'T'"
+					);
+;
 					
 					stmt.execute();
 					
@@ -225,7 +372,7 @@ public class ChessDerbyDatabase{
 					stmt = conn.prepareStatement(
 							"update pieces" +
 							" set pieces.x = ?, pieces.y = ?" +
-							" where pieces.x = ? and pieces.y = ?"
+							" where pieces.x = ? and pieces.y = ? and pieces.captured = 'N'"
 					);
 					stmt.setInt(1, endx);
 					stmt.setInt(2, endy);
