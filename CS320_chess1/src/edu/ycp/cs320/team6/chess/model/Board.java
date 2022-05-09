@@ -93,6 +93,11 @@ public class Board{
 	}
 	
 	
+	public String getBoardImage(int x, int y) {
+		return board[x][y];
+	}
+	
+	
 	
 	public String getPiece(int x, int y) {
 		return board[x][y];

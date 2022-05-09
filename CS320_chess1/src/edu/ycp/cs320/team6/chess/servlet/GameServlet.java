@@ -1,6 +1,7 @@
 package edu.ycp.cs320.team6.chess.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,9 +20,14 @@ Board board = new Board();
 private int timesVisit = 0;
 private int row; 
 private int col;
+private int rowNumber;
+private String colNumber;
 private boolean playerOne;
 private boolean playerTwo;
-
+private int squares = 64;
+private int secondaryI = 1;
+private ArrayList<Integer> numbers;
+private ArrayList<String> squaresList = new ArrayList<String>();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -30,6 +36,99 @@ private boolean playerTwo;
 		System.out.println("Game Servlet: doGet");
 		
 		board.fillBoardImage();
+		for(int i=0; i<8;i++) {
+			for(int j=0; j<8;j++) {
+//				System.out.println("I:" + i+ "J: " + j+ board.getBoardImage(i, j));
+			}
+		}
+		int jj = 0;
+		//originally this was i<square
+		for(int i=0; i<=squares; i++) {
+//			System.out.println(i);
+			
+			String boardCol = getColFromNumber(i);
+			int boardRow = getRowFromNumber(i);
+			
+			String square = boardCol + boardRow;
+			squaresList.add(square);
+			System.out.println("SQUARE" + square);
+//			req.setAttribute("value"+i, square);
+			
+			
+			
+			//Following was attempting to use if-statemetn to controll for the fact that 
+			//the array exception kept going off
+			//I think it's because we have i is less than squares when it should be 
+			//Origianl code now has if statemtn equaling i=8 thagt breaks, else it sets square to file src from board
+			//jj++ increments manually 
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+//			if(i==8) {
+//				secondaryI +=1;
+//				break;
+//			}else {
+////			for(int j=0; j<8; j++) {
+////				System.out.println( "I: "+ i +"J:"+j);
+////				req.setAttribute(square+"Image", board.getBoardImage(i, j));
+////				System.out.println("THIS IS THE SQUARE LOOP: " + square+"   "+board.getBoardImage(i, j));
+////			}
+//				System.out.println("SQUARE: " + square);
+//				System.out.println("Secondary I; " + secondaryI);
+//				System.out.println("Tile: " + board.getBoardImage(i, jj));
+////				req.setAttribute(square+"Image", board.getBoardImage(i, jj));
+//				jj+=1;
+//			}
+			
+			
+//			req.setAttribute("value"+i, board.getBoardImage(i, y));
+			
+			
+			
+			
+		}
+		
+		if(squaresList.get(0).equals("a0")) {
+			squaresList.remove(0);
+		}
+		
+		System.out.println(squaresList);
+		int x =0; 
+		int y=0;
+		
+		for(int i=0; i<squaresList.size(); i++) {
+			System.out.println("SQUARE: "+ squaresList.get(i)+" "+"X:" + x+ "Y: " + y+ board.getBoardImage(x, y));
+			req.setAttribute(squaresList.get(i)+"Image", board.getBoardImage(x, y));
+			y+=1;
+			
+			if(y==7) {
+				System.out.println("X:" + x+ "Y: " + y+ board.getBoardImage(x, y));
+				req.setAttribute(squaresList.get(i)+"Image", board.getBoardImage(x, y));
+				x+=1;
+				y=0;
+//				System.out.println("AFTER CHANGESX:" + x+ "Y: " + y+ board.getBoardImage(x, y));
+			}
+			if(x==8) {
+				break;
+			}
+			
+			
+		}
+		
+		System.out.println("Boardsjfklafjsakfja: " + board.getBoardImage(0, 2));
+//		req.setAttribute("value1", 1);
 		//board.addPieceToBoard("Images/Chess_black_pawn.png", 1, 3);
 		//req.setAttribute("image", board.getPiece(1, 3));
 		String username  = (String) req.getSession().getAttribute("username");
@@ -62,7 +161,8 @@ private boolean playerTwo;
 		
 		String from = req.getParameter("start");
 		String to = req.getParameter("end");
-		String filePath = req.getParameter("img");
+		
+		String filePath = req.getParameter("src");
 		
 
 		System.out.println("donde"+req.getSession().getAttribute("playerColor"));
@@ -75,10 +175,17 @@ private boolean playerTwo;
 		System.out.println(to);
 		}
 		
-//		req.setAttribute("image", "Images/Chess_black_pawn.png");
-		System.out.println(filePath);
-//		req.setAttribute("image", );
 		
+		for(int i=1; i<=squares; i++) {
+			System.out.println(i);
+			req.setAttribute("value"+i, i);
+			
+		}
+//		req.setAttribute("image", "Images/Chess_black_pawn.png");
+		System.out.println("FilePath: "+filePath);
+//		req.setAttribute("image", );
+		System.out.println("ROWFROMNUMBER"+" "+getRowFromNumber(22));
+		System.out.println("COLFROMNUMBER" + " " + getColFromNumber(22));
 		//Piece piece = new Piece(xPosPiece, yPosPiece, hasMoved);
 		//controller.setModel(piece);
 		
@@ -87,7 +194,7 @@ private boolean playerTwo;
 		System.out.println("FROM col: "+" "+getColFromParam(from));
 		
 		board.updateBoardImage(1, 1, 2, 2);
-		
+		req.setAttribute("b3Image", board.getBoardImage(2, 2));
 		
 		// Forward to view to render the result HTML document
 				req.getRequestDispatcher("/_view/game.jsp").forward(req, resp);
@@ -113,7 +220,7 @@ private boolean getBoolFromParam(String s) {
 private int getRowFromParam(String s) {
 	String str[] = s.split("");
 //	System.out.println("FROM row: "+" "+str[1]);
-	return getIntfromParam(str[1])-1;
+	return getIntfromParam(str[1]);
 		
 	}
 	
@@ -127,25 +234,153 @@ private int getColFromParam(String s) {
 	
 	String testStr = str[0];
 	if (testStr.equals("a")) {
-		col = 0;
-	} else if(testStr.equals("b")) {
 		col = 1;
+	} else if(testStr.equals("b")) {
+		col = 2;
 	}
 	else if(testStr.equals("c")) {
-		col = 2;
-	}else if(testStr.equals("d")) {
 		col = 3;
-	}else if(testStr.equals("e")) {
+	}else if(testStr.equals("d")) {
 		col = 4;
-	}else if(testStr.equals("f")) {
+	}else if(testStr.equals("e")) {
 		col = 5;
-	}else if(testStr.equals("g")) {
+	}else if(testStr.equals("f")) {
 		col = 6;
-	}else if(testStr.equals("h")) {
+	}else if(testStr.equals("g")) {
 		col = 7;
+	}else if(testStr.equals("h")) {
+		col = 8;
 	}
 	
 	return col;
 }
+
+private String getColFromNumber(int number) {
+	
+	if(number<=8) {
+		colNumber= "a";
+		
+	}else if(number>8 && number<=16) {
+		colNumber="b";
+	}else if(number>16 && number<=24) {
+		colNumber= "c";
+	}else if(number>24 && number<=32) {
+		colNumber= "d";
+	}else if(number>32 && number<=40) {
+		colNumber= "e";
+	}else if(number>40 && number<=48) {
+		colNumber= "f";
+	}else if(number>48 && number<=56) {
+		colNumber= "g";
+		
+	}else if(number>56 && number<=64) {
+		colNumber= "h";
+		
+	}
+	return colNumber;
+	
+	
+	
+}
+
+
+
+
+private int getRowFromNumber(int number) {
+	
+	//Creates new array list to hold numbers that are multiples of 1,2,3,4,5,6,7,8
+	numbers = new ArrayList<Integer>();
+	
+	
+
+
+
+
+
+
+	
+	//Adds multiples of 8 to 1,2,3,4,5,6,7,8
+	for(int i=1; i<=8; i++) {
+		for(int j=1; j<=8; j++) {
+			int number1 = i + (8*j);
+			
+			if(number1<=64) {
+				numbers.add(number1);
+			}
+		}
+	}
+	
+//	System.out.println("Size " + numbers.size());
+//	System.out.println("nUMBERS: " + numbers);
+	//Cycles through index, which should be 56 elements long
+	numbers.add(0,1);
+	numbers.add(8,2);
+	numbers.add(16,3);
+	numbers.add(24,4);
+	numbers.add(32,5);
+	numbers.add(40,6);
+	numbers.add(48,7);
+	numbers.add(56,8);
+	for(int i=0; i<numbers.size(); i++) {
+		int testNumber = numbers.get(i);
+		
+//		System.out.println("Index: " + i + " Number: " + testNumber);
+		
+		
+		if(testNumber ==number) {
+//			System.out.println("same here");
+			
+			
+			//This grouping here is for Row1
+			//
+			if(i>=0 && i<=7) {
+//				System.out.println("Here lays the problem  "+number);
+//				for(int j=1; j<=8;j++) {
+//					rowNumber=j;
+//					return rowNumber;
+//				}
+				rowNumber = 1;
+				}
+			//This is for Row2
+			else if(i>=8 && i<=15) {
+				rowNumber = 2;
+				}
+			//Row3
+			else if(i>=16 && i<=23) {
+					rowNumber  = 3;
+				}
+			//So on...
+			else if(i>=24 && i<=31) {
+					rowNumber = 4;
+				}else if(i>=32 && i<=40) {
+//					System.out.println("THIS IS US" + i);
+					if(i==40) {
+						rowNumber = 6;
+						return rowNumber;
+					}
+					rowNumber  = 5;
+				}else if(i>=41 && i<=48) {
+					if(i==48) {
+						rowNumber = 7;
+						return rowNumber;
+					}
+					rowNumber  = 6;
+				}else if(i>=49 && i<=56) {
+					if(i==56) {
+						rowNumber = 8;
+						return rowNumber;
+					}
+					rowNumber  = 7;
+				}else if(i>=57 && i<=64) {
+					//orig 64
+					rowNumber  = 8;
+				}
+		}
+	}
+//	System.out.println(numbers);
+	return rowNumber;
+	
+}
+
 
 }
