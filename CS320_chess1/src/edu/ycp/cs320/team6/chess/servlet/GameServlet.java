@@ -20,6 +20,8 @@ Board board = new Board();
 private int timesVisit = 0;
 private int row; 
 private int col;
+private int squareX;
+private int squareY;
 private int rowNumber;
 private String colNumber;
 private boolean playerOne;
@@ -105,24 +107,19 @@ private ArrayList<String> squaresList = new ArrayList<String>();
 		}
 		
 		System.out.println(squaresList);
-		int x =0; 
-		int y=0;
+		int x = 0; 
+		int y = 0;
 		
 		for(int i=0; i<squaresList.size(); i++) {
 			System.out.println("SQUARE: "+ squaresList.get(i)+" "+"X:" + x+ "Y: " + y+ board.getBoardImage(x, y));
-			req.setAttribute(squaresList.get(i)+"Image", board.getBoardImage(x, y));
-			y+=1;
 			
-			if(y==7) {
-				System.out.println("X:" + x+ "Y: " + y+ board.getBoardImage(x, y));
-				req.setAttribute(squaresList.get(i)+"Image", board.getBoardImage(x, y));
-				x+=1;
-				y=0;
-//				System.out.println("AFTER CHANGESX:" + x+ "Y: " + y+ board.getBoardImage(x, y));
-			}
-			if(x==8) {
-				break;
-			}
+			
+			x = getXFromSquare(squaresList.get(i));
+			y = getYFromSquare(squaresList.get(i));
+			
+			
+			req.setAttribute(squaresList.get(i)+"Image", board.getBoardImage(x, y));
+			
 			
 			
 		}
@@ -283,6 +280,56 @@ private String getColFromNumber(int number) {
 	
 }
 
+
+private int getXFromSquare(String square) {
+	
+	String str[] = square.split("");
+	System.out.println("SQuare decoupling!!!"+str[0] + str[1]);
+	
+	if(str[0].equals("a")) {
+		squareX = 0;
+		
+	}else if(str[0].equals("b")) {
+		squareX = 1;
+	}else if(str[0].equals("c")) {
+		squareX = 2;
+	}else if(str[0].equals("d")) {
+		squareX = 3;
+	}else if(str[0].equals("e")) {
+		squareX = 4;
+	}else if(str[0].equals("f")) {
+		squareX = 5;
+	}else if(str[0].equals("g")) {
+		squareX = 6;
+	}else if(str[0].equals("h")) {
+		squareX = 7;
+	}
+	return squareX;
+	
+	
+}
+
+private int getYFromSquare(String square) {
+	if(square.endsWith("1")) {
+		squareY = 0;
+		
+	}else if(square.endsWith("2")) {
+		squareY = 1;
+	}else if(square.endsWith("3")) {
+		squareY = 2;
+	}else if(square.endsWith("4")) {
+		squareY = 3;
+	}else if(square.endsWith("5")) {
+		squareY = 4;
+	}else if(square.endsWith("6")) {
+		squareY = 5;
+	}else if(square.endsWith("7")) {
+		squareY = 6;
+	}else if(square.endsWith("8")) {
+		squareY = 7;
+	}
+	return squareY;
+}
 
 
 
