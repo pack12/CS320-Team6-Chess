@@ -17,6 +17,7 @@ public class GameServlet extends HttpServlet{
 	
 private static final long serialVersionUID = 1L;
 Board board = new Board();
+Game game = new Game();
 private int timesVisit = 0;
 private int row; 
 private int col;
@@ -130,18 +131,16 @@ private ArrayList<String> squaresList = new ArrayList<String>();
 		String from = req.getParameter("start");
 		String to = req.getParameter("end");
 		
+		//from.charAt(0)
+		
+		//game.validateCheck(oX, oY, nX, nY)
+		
 		String filePath = req.getParameter("src");
 		
 
 		System.out.println("donde"+req.getSession().getAttribute("playerColor"));
 		
-		if(from != "$(start)") {
-		System.out.println(from);
-		}
 		
-		if(to != "$(end)") {
-		System.out.println(to);
-		}
 		
 		int oldX = getXFromSquare(from);
 		int oldY = getYFromSquare(from);
@@ -154,7 +153,7 @@ private ArrayList<String> squaresList = new ArrayList<String>();
 		
 		
 		
-		board.updateBoardImage(oldX, oldY, newX, newY);
+		//board.updateBoardImage(oldX, oldY, newX, newY);
 		
 		int x;
 		int y;
