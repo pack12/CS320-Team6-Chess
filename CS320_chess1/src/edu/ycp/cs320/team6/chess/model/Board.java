@@ -2,6 +2,8 @@ package edu.ycp.cs320.team6.chess.model;
 
 import edu.ycp.cs320.team6.chess.model.Player;
 import edu.ycp.cs320.team6.chess.model.Piece;
+import edu.ycp.cs320.team6.chess.chessdb.persist.ChessDerbyDatabase;
+import edu.ycp.cs320.team6.chess.chessdb.model.DBPiece;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -12,7 +14,7 @@ public class Board{
 	
 	
 	
-	
+	ChessDerbyDatabase db = new ChessDerbyDatabase();
 	
 	private String[][] board;
 	
@@ -98,6 +100,16 @@ public class Board{
 		}
 	}
 	
+	public void translatePieceImage(int x, int y) {
+		System.out.println("X: " +x + " Y: "+ y);
+		DBPiece piece = db.findPieceByPosition(x, y+1);
+		System.out.println("This is the database method to find piece:  " + piece.getType());
+		System.out.println("This is the database method to find piece:  " + piece.getX());
+		System.out.println("This is the database method to find piece:  " + piece.getY());
+		
+		String src = getBoardImage(piece.getX(), piece.getY());
+		System.out.println("PIECE FROM DATABASE: "+src);
+	}
 	
 	public String getBoardImage(int x, int y) {
 		return board[x][y];

@@ -141,6 +141,8 @@ private ArrayList<String> squaresList = new ArrayList<String>();
 		
 		int oldX = getXFromSquare(from);
 		int oldY = getYFromSquare(from);
+		board.translatePieceImage(oldX, oldY);
+		
 		
 		int newX = getXFromSquare(to); 
 		int newY = getYFromSquare(to);
@@ -258,7 +260,7 @@ private String getColFromNumber(int number) {
 private int getXFromSquare(String square) {
 	
 	String str[] = square.split("");
-	System.out.println("SQuare decoupling!!!"+str[0] + str[1]);
+//	System.out.println("SQuare decoupling!!!"+str[0] + str[1]);
 	
 	if(str[0].equals("a")) {
 		squareX = 0;
