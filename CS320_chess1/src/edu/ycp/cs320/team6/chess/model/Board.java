@@ -96,19 +96,21 @@ public class Board{
 		
 		for(int i =0; i<board.length; i++) {
 			for(int j =0; j<board.length; j++) {
-				System.out.println("X: " +i + " Y: "+ j+board[i][j]);
+				System.out.println("What is this? X: " +i + " Y: "+ j+board[i][j]);
 			}
 		}
 	}
 	
 	public void translatePieceImage(int x, int y) {
-		System.out.println("X: " +x + " Y: "+ y);
-		DBPiece piece = db.findPieceByPosition(x, y+1);
+		System.out.println("twas beforeX: " +(x) + " Y: "+ (y));
+		System.out.println("twasX: " +(x+1) + " Y: "+ (y+1));
+		
+		DBPiece piece = db.findPieceByPosition(x+1, y+1);
 		System.out.println("This is the database method to find piece:  " + piece.getType());
 		System.out.println("This is the database method to find piece:  " + piece.getX());
 		System.out.println("This is the database method to find piece:  " + piece.getY());
 		
-		String src = getBoardImage(piece.getX(), piece.getY());
+		String src = getBoardImage(piece.getX(), piece.getY()-1);
 		System.out.println("PIECE FROM DATABASE: "+src);
 	}
 	

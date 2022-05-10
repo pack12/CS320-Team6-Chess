@@ -51,6 +51,9 @@ public class DBReturnTests {
 		@Test
 		public void testFindPieceByPosition() {
 			DBPiece piece11Rook = db.findPieceByPosition(1, 1);
+			DBPiece piecesomething = db.findPieceByPosition(1, 2);
+			System.out.println(piecesomething.getType());
+			assertEquals(piecesomething.getType(),"Pawn");
 			DBPiece noPiece = db.findPieceByPosition(5, 5);
 			assertEquals(piece1.getColor(), piece11Rook.getColor());
 			assertEquals(piece1.getType(), piece11Rook.getType());
