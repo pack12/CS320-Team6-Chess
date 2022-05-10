@@ -13,15 +13,28 @@ public class Pawn extends Piece implements PieceInterface{
 	}
 	
 	public boolean sees(int lookX, int lookY) {
-		if ((lookY-Y) == 1 && abs(lookX - X) == 1) {
-			return true;
-		}else if(abs(X - lookX) == 0 && (lookY - Y) == 1 || abs(X - lookX) == 0 && (lookY - Y) == 2 && !hasLeaped) {
-			return true;
+		if(color.equals("White")) {
+			if ((lookY-Y) == 1 && abs(lookX - X) == 1) {
+				return true;
+			}else if(abs(X - lookX) == 0 && (lookY - Y) == 1 || abs(X - lookX) == 0 && (lookY - Y) == 2 && !hasLeaped) {
+				return true;
+			}
+			else {
+
+				return false;
+			}	
 		}
 		else {
-			System.out.print("here");
-			return false;
-		}		
+			if ((Y-lookY) == 1 && abs(lookX - X) == 1) {
+				return true;
+			}else if(abs(X - lookX) == 0 && (Y- lookY) == 1 || abs(X - lookX) == 0 && (Y - lookY) == 2 && !hasLeaped) {
+				return true;
+			}
+			else {
+
+				return false;
+			}		
+		}
 	}
 	
 	@Override
@@ -33,12 +46,13 @@ public class Pawn extends Piece implements PieceInterface{
 		int incrementY = lookY-Y;
 		
 		if(incrementX == 0) {
-		incrementY = 1;
+		incrementY = incrementY/(abs(incrementY));
 		int i=Y+incrementY; 
 		while (i!=lookY){
-			System.out.print("looping");
+
 			DBPiece check = db.findPieceByPosition(lookX, i);
 			if (check != null && check.getCaptured().equals("N")) {
+
 				return false;
 			}
 			i=i+incrementY;
@@ -47,6 +61,7 @@ public class Pawn extends Piece implements PieceInterface{
 			return true;
 		} 
 		else {
+
 				return false;
 			}
 		}
@@ -55,6 +70,7 @@ public class Pawn extends Piece implements PieceInterface{
 				return true;
 			}
 			else {
+
 				return false;
 			}
 		}

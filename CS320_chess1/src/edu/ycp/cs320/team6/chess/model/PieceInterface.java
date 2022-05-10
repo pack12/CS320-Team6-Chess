@@ -5,7 +5,6 @@ public interface PieceInterface {
 	public boolean checkPathOpen(int lookX, int lookY);
 	public default boolean validateMove(int lookX, int lookY) {
 		if(sees(lookX, lookY)) {
-			System.out.print("sees");
 			return checkPathOpen(lookX, lookY);
 		}
 		else {

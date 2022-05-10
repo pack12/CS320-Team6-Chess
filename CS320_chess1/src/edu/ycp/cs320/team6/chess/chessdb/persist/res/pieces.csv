@@ -1,8 +1,8 @@
 Rook|White|N|1|1|N
 Knight|White|N|2|1|N
 Bishop|White|N|3|1|N
-King|White|N|4|1|N
-Queen|White|N|5|1|N
+King|White|N|5|1|N
+Queen|White|N|4|1|N
 Bishop|White|N|6|1|N
 Knight|White|N|7|1|N
 Rook|White|N|8|1|N
@@ -17,8 +17,8 @@ Pawn|White|N|8|2|N
 Rook|Black|N|1|8|N
 Knight|Black|N|2|8|N
 Bishop|Black|N|3|8|N
-Queen|Black|N|4|8|N
-King|Black|N|5|8|N
+Queen|Black|N|5|8|N
+King|Black|N|4|8|N
 Bishop|Black|N|6|8|N
 Knight|Black|N|7|8|N
 Rook|Black|N|8|8|N

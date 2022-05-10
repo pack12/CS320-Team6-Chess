@@ -26,7 +26,7 @@ public class Board{
 	public Board(){
 		board = new String[8][8];
 		
-
+		
 	}
 	
 	
@@ -37,7 +37,8 @@ public class Board{
 	public void addPieceToBoard(String fileName, int x, int y) {
 		board[x][y] = fileName;
 		
-	}
+	}	
+	
 	
 	
 	public void fillBoardImage() throws FileNotFoundException {
