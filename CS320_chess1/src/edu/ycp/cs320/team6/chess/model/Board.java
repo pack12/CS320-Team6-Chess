@@ -45,8 +45,15 @@ public class Board{
 		File myFile = new File("chessBoardImages");
 		Scanner inputFile = new Scanner(myFile);
 		
+		
 		int row =0;
 		int col =0;
+//		int index = 0;
+		
+//		for(int i=0; i<piece.size(); i++) {
+//			board[row][col] = piece.get(i);
+//		}
+		
 		while(inputFile.hasNext()) {
 			String line = inputFile.nextLine();
 			
@@ -84,13 +91,75 @@ public class Board{
 			}
 		}
 		
+		
+		
+		
 	}
 	
-	
+	public void fillBoardSql() {
+		
+		int row = 0; 
+		int col = 0;
+		
+		ArrayList<DBPiece> piece = db.findUnCaptured("White");
+		
+		ArrayList<DBPiece> blackPieces = db.findUnCaptured("Black");
+		for(int i=0; i<piece.size(); i++) {
+			System.out.println("WHHHHHHYYYYY"+piece.get(i).getX());
+			String filePath = translatePieceImage(piece.get(i).getX(), piece.get(i).getY());
+			System.out.println("File from fillboardsql"+filePath);
+			
+			board[row][col] = filePath;
+			row++;
+			
+			if(col ==8) {
+				break;
+			}
+			if(row == 8) {
+				row = 0;
+				col++;
+				
+			}	
+			}
+		
+		row = 0;
+		col = 6;
+		for(int i=0; i<blackPieces.size(); i++) {
+			String filePath = translatePieceImage(blackPieces.get(i).getX(), blackPieces.get(i).getY());
+			System.out.println("File from fillboardsql"+filePath);
+			
+			if(col ==8) {
+				break;
+			}
+			
+			board[row][col] = filePath;
+			row++;
+			
+			
+			if(row == 8) {
+				row = 0;
+				col++;
+				
+			}
+			
+			
+			
+			
+		}
+		for(int i1=0; i1<board.length; i1++) {
+			for(int j=0; j<board.length; j++) {
+				System.out.println("FINal SQL BAoARD:  "+ " X: "+ i1+ "Y: "+ j + board[i1][j]);
+			}
+		}
+		
+		
+	}
 	
 	public void updateBoardImage(int oldX, int oldY, int newX, int newY) {
 		System.out.println("This is old position X:"+ oldX+ "Y: " + oldY+board[oldX][oldY]);
 		System.out.println("This is new position X: " + newX + "Y: " + newY);
+		
+		
 		board[newX][newY] = board[oldX][oldY];
 		board[oldX][oldY] = "";
 		
@@ -101,17 +170,20 @@ public class Board{
 		}
 	}
 	
-	public void translatePieceImage(int x, int y) {
+	public String translatePieceImage(int x, int y) {
 		System.out.println("twas beforeX: " +(x) + " Y: "+ (y));
-		System.out.println("twasX: " +(x+1) + " Y: "+ (y+1));
-		
-		DBPiece piece = db.findPieceByPosition(x+1, y+1);
-		System.out.println("This is the database method to find piece:  " + piece.getType());
-		System.out.println("This is the database method to find piece:  " + piece.getX());
-		System.out.println("This is the database method to find piece:  " + piece.getY());
+//		System.out.println("twasX: " +(x+1) + " Y: "+ (y+1));
+		System.out.println("FindArryaAcceptable Pos:   " + (x-1) + " " + (y-1));
+		DBPiece piece = db.findPieceByPosition(x, y);
+//		System.out.println("This is the database method to find piece:  " + piece.getType());
+//		System.out.println("This is the database method to find piece:  " + piece.getX());
+//		System.out.println("This is the database method to find piece:  " + piece.getY());
 		
 		String src = getBoardImage(piece.getX()-1, piece.getY()-1);
-		System.out.println("PIECE FROM DATABASE: "+src);
+		System.out.println("PIECE FROM Board Array: "+src);
+		
+//		db.updatePiecePosition(x+1, y+1, newX+1, newY+1);
+		return src;
 	}
 	
 	public String getBoardImage(int x, int y) {

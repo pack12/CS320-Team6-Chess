@@ -38,6 +38,7 @@ private ArrayList<String> squaresList = new ArrayList<String>();
 		System.out.println("Game Servlet: doGet");
 		
 		board.fillBoardImage();
+		board.fillBoardSql();
 		for(int i=0; i<8;i++) {
 			for(int j=0; j<8;j++) {
 //				System.out.println("I:" + i+ "J: " + j+ board.getBoardImage(i, j));
@@ -53,7 +54,7 @@ private ArrayList<String> squaresList = new ArrayList<String>();
 			
 			String square = boardCol + boardRow;
 			squaresList.add(square);
-			System.out.println("SQUARE" + square);
+//			System.out.println("SQUARE" + square);
 
 			
 			
@@ -114,6 +115,9 @@ private ArrayList<String> squaresList = new ArrayList<String>();
 		}
 		
 		
+		
+		
+		
 		System.out.println(username + " is" + req.getSession().getAttribute("playerColor") );
 		req.getRequestDispatcher("/_view/game.jsp").forward(req, resp);
 	}
@@ -141,11 +145,14 @@ private ArrayList<String> squaresList = new ArrayList<String>();
 		
 		int oldX = getXFromSquare(from);
 		int oldY = getYFromSquare(from);
+		int newX = getXFromSquare(to); 
+		int newY = getYFromSquare(to);
+		
+		
 		board.translatePieceImage(oldX, oldY);
 		
 		
-		int newX = getXFromSquare(to); 
-		int newY = getYFromSquare(to);
+		
 		
 		board.updateBoardImage(oldX, oldY, newX, newY);
 		
@@ -173,60 +180,7 @@ private ArrayList<String> squaresList = new ArrayList<String>();
 				req.getRequestDispatcher("/_view/game.jsp").forward(req, resp);
 		
 	}
-private int getIntfromParam(String s) {
-	if(s == null || s.equals("")) {
-		return (Integer) null;
-	}else {
-		return Integer.parseInt(s);
-	}
-}
 
-private boolean getBoolFromParam(String s) {
-	if(s == null || s.equals("")) {
-		return (Boolean) null;
-	}else {
-		return Boolean.parseBoolean(s);
-	}
-}
-
-
-private int getRowFromParam(String s) {
-	String str[] = s.split("");
-//	System.out.println("FROM row: "+" "+str[1]);
-	return getIntfromParam(str[1]);
-		
-	}
-	
-
-
-
-private int getColFromParam(String s) {
-	String str[] = s.split("");
-	System.out.println(str[0]+" "+ str[1]);
-	System.out.println("Col" + str[0]);
-	
-	String testStr = str[0];
-	if (testStr.equals("a")) {
-		col = 1;
-	} else if(testStr.equals("b")) {
-		col = 2;
-	}
-	else if(testStr.equals("c")) {
-		col = 3;
-	}else if(testStr.equals("d")) {
-		col = 4;
-	}else if(testStr.equals("e")) {
-		col = 5;
-	}else if(testStr.equals("f")) {
-		col = 6;
-	}else if(testStr.equals("g")) {
-		col = 7;
-	}else if(testStr.equals("h")) {
-		col = 8;
-	}
-	
-	return col;
-}
 
 private String getColFromNumber(int number) {
 	
