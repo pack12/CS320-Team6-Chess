@@ -89,49 +89,58 @@ public class Game{
 		
 		
 		
-		System.out.print(piece.getClass().toString());
+
 		
-		if (!piece.validateMove(newX, newY)) {
-			return false;
-		}
-		else {
-			db.updateCapturedByPosition(newX, newY, "T");
-			db.updatePiecePosition(prevX, prevY, newX, newY);
-		}
+		return piece.validateMove(newX, newY);
 		
 		
-		return true;
+		
 	}
 	
 	public boolean validateCheck(int oX, int oY, int nX, int nY) {
 		
-		if(!validateEach(oX, oY, nX, nY)) {
-			System.out.print("first ret false");
-			return false;
-		}
+	String color = db.findColorByPosition(oX, oY);
+	
+		DBPiece king = db.findKingByColor(color);
+	
 		
-		String color = new String();
 		
-		if(db.findColorByPosition(oX, oY) == "White") {
+		if(color.equals("White")) {
 			color = "Black";
 		}
 		else {
 			color = "White";
 		}
 		
-		DBPiece king = db.findKingByColor(db.findColorByPosition(oX, oY));
+		if(!validateEach(oX, oY, nX, nY)) {
+			System.out.print(db.findPieceByPosition(oX, oY).getType() + db.findPieceByPosition(oX, oY).getColor());
+			System.out.print("False At A");
+			return false;
+		}
+		else {
+			db.updateCapturedByPosition(nX, nY, "T");
+			db.updatePiecePosition(oX, oY, nX, nY);
+		}
 		
 		ArrayList<DBPiece> cycle = db.findUnCaptured(color);
+		
+		
+		
+		
 		
 		Boolean end = true;
 		Boolean endChanger;
 		
-		for(DBPiece each : cycle) {			
+		for(DBPiece each : cycle) {
 			endChanger = validateEach(each.getX(), each.getY(), king.getX(), king.getY());
+			System.out.print("First Piece:" + each.getY() + each.getX() + "King:" +king.getX() + " " + king.getY() + "Bool:" + endChanger);
 			if(endChanger) {
+				System.out.print("False At B");
 				end = false;
 			}
 		}
+		
+		System.out.print('\n');
 		
 		if(!end) {
 			db.updatePiecePosition(nX, nY, oX, oY);

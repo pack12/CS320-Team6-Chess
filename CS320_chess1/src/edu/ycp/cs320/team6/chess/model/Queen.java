@@ -21,6 +21,7 @@ public class Queen extends Piece implements PieceInterface{
 			return true;
 		}
 		else {
+
 			return false;
 		}		
 	}
@@ -52,6 +53,7 @@ public class Queen extends Piece implements PieceInterface{
 		while (i!=lookX || j!=lookY){ 
 			DBPiece check = db.findPieceByPosition(i, j);
 			if (check != null && check.getCaptured().equals("N")) {
+
 				return false;
 			}
 			i=i+incrementX;
@@ -63,6 +65,7 @@ public class Queen extends Piece implements PieceInterface{
 		} 
 		else {
 			if (checktake.getColor().equals(color)) {
+
 				return false;
 			}
 			else{

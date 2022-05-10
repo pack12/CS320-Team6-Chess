@@ -72,7 +72,7 @@ public class ChessDerbyDatabase{
 					
 					// check if the title was found
 					if (!found) {
-						System.out.println("There is no piece at <" + x + "> and <" + y + ">");
+					
 						result = null;
 					}
 					
@@ -167,7 +167,7 @@ public class ChessDerbyDatabase{
 					
 					// check if the title was found
 					if (!found) {
-						System.out.println("There is no piece at <" + x + "> and <" + y + ">");
+
 						result = null;
 					}
 					

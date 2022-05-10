@@ -25,12 +25,10 @@ public class Bishop extends Piece implements PieceInterface{
 		int incrementX = lookX-X;
 		int incrementY = lookY-Y;
 		
-		if(incrementX!=0) {
+
 		incrementX = incrementX/(abs(incrementX));
-		}
-		if(incrementY!=0) {
 		incrementY = incrementY/(abs(incrementY));
-		}
+		
 		
 		int i=X+incrementX;
 		int j=Y+incrementY; 

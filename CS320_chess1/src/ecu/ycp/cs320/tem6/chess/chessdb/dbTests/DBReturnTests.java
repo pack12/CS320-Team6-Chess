@@ -37,8 +37,17 @@ public class DBReturnTests {
 			assertEquals(user.getRanking(), user1.getRanking());
 			assertEquals(user.getUsername(), user1.getUsername());
 			assertEquals(userNull, null);
-			
 		}
+			
+		@Test
+		public void testFindKingByColor() {
+			DBPiece king = db.findKingByColor("White");
+			DBPiece kig = db.findKingByColor("Black");
+			assertEquals(kig.getX(), 4);
+			assertEquals(king.getX(), 5);
+		}
+			
+		
 		@Test
 		public void testFindPieceByPosition() {
 			DBPiece piece11Rook = db.findPieceByPosition(1, 1);
@@ -54,9 +63,9 @@ public class DBReturnTests {
 		
 		@Test
 		public void testWhiteCapturedPieces() {
-			ArrayList<DBPiece> whitecap = db.findCaptured("white");			
+			ArrayList<DBPiece> whitecap = db.findCaptured("White");			
 			assertEquals(whitecap, null);
-			ArrayList<DBPiece> blackcap = db.findCaptured("black");			
+			ArrayList<DBPiece> blackcap = db.findCaptured("Black");			
 			assertEquals(blackcap, null);
 		}
 	}
