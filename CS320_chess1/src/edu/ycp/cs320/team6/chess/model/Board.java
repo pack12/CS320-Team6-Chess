@@ -110,7 +110,7 @@ public class Board{
 		System.out.println("This is the database method to find piece:  " + piece.getX());
 		System.out.println("This is the database method to find piece:  " + piece.getY());
 		
-		String src = getBoardImage(piece.getX(), piece.getY()-1);
+		String src = getBoardImage(piece.getX()-1, piece.getY()-1);
 		System.out.println("PIECE FROM DATABASE: "+src);
 	}
 	
