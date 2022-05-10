@@ -13,6 +13,7 @@ import java.util.Scanner;
 import edu.ycp.cs320.team6.chess.chessdb.persist.DB_Util;
 import edu.ycp.cs320.team6.chess.chessdb.model.DBPiece;
 import edu.ycp.cs320.team6.chess.chessdb.model.DBUser;
+import edu.ycp.cs320.team6.chess.chessdb.model.DBGame;
 
 
 public class ChessDerbyDatabase{
@@ -358,7 +359,69 @@ public class ChessDerbyDatabase{
 		});
 	}
 	
-	
+	public ArrayList<DBGame> findGamesByPlayer(final String player){
+		return executeTransaction(new Transaction<ArrayList<DBGame>>() {
+			@Override
+			public ArrayList<DBGame> execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				ResultSet resultSet = null;
+				
+				try {
+					// Retrieve all attributes from piece table
+					
+					System.out.print("FGBP A");
+					
+					stmt = conn.prepareStatement(
+							"select games.*" +
+							"  from games" +
+							" where games.player1 = ?" +
+							" or games.player2 = ?"
+					);
+					
+						System.out.print("FGBP B");
+					
+						stmt.setString(1, player);
+						stmt.setString(2, player);
+						
+						
+						System.out.print("FGBP B");
+					
+					ArrayList<DBGame> result = new ArrayList<DBGame>();
+					
+					resultSet = stmt.executeQuery();
+					
+					System.out.print("FGBP C");
+					
+					// for testing that a result was returned
+					Boolean found = false;
+					
+					while (resultSet.next()) {
+						found = true;
+						
+						DBGame add = new DBGame();
+						
+						loadPiece(add, resultSet, 1);
+						
+						result.add(add);
+					
+					}
+					
+					// check if the title was found
+					if (!found) {
+						System.out.println("This player has no games");
+						result = null;
+					}
+					
+					System.out.print("FGBP D");
+					
+					return result;
+				} finally {
+					DB_Util.closeQuietly(resultSet);
+					DB_Util.closeQuietly(stmt);
+				}
+			}
+		});
+	}
 	
 	public void updatePiecePosition(final int startx, final int starty, final int endx, final int endy) {
 		executeTransaction(new Transaction<Boolean>() {
@@ -388,6 +451,35 @@ public class ChessDerbyDatabase{
 			}
 		});
 	}
+	
+	public void addGameToGames(final String player1, final int change1, final String player2, final int change2) {
+		executeTransaction(new Transaction<Boolean>() {
+			@Override
+			public Boolean execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				
+				
+				try {
+					// Replace the x and y for the initial position with the final position
+					stmt = conn.prepareStatement(
+							"insert into games (player1, player2, victor, change) values (?, ?, ?, ?)"
+					);
+					stmt.setString(1, player1);
+					stmt.setInt(2, change1);
+					stmt.setString(3, player2);
+					stmt.setInt(4, change2);
+					
+					stmt.execute();
+					
+					return true;
+				} finally {
+					DB_Util.closeQuietly(stmt);
+				}
+			}
+		});
+	}
+	
+	
 	
 	public DBUser findUserByUsernameAndPassword(final String username, final String password) {
 		return executeTransaction(new Transaction<DBUser>() {
@@ -509,6 +601,14 @@ public class ChessDerbyDatabase{
 		piece.setCaptured(resultSet.getString(index++));
 	}
 	
+	private void loadPiece(DBGame game, ResultSet resultSet, int index) throws SQLException {
+		game.setGameID(resultSet.getInt(index++));
+		game.setPlayer1(resultSet.getString(index++));
+		game.setChange1(resultSet.getInt(index++));
+		game.setPlayer2(resultSet.getString(index++));
+		game.setChange2(resultSet.getInt(index++));
+	}
+	
 	// will have to replace sql logic
 	
 	public void createTables() {
@@ -517,6 +617,7 @@ public class ChessDerbyDatabase{
 			public Boolean execute(Connection conn) throws SQLException {
 				PreparedStatement stmt1 = null;
 				PreparedStatement stmt2 = null;
+				PreparedStatement stmt3 = null;
 				
 				try {
 					stmt1 = conn.prepareStatement(
@@ -540,6 +641,18 @@ public class ChessDerbyDatabase{
 					);
 					stmt2.executeUpdate();
 					
+					stmt3 = conn.prepareStatement(
+							"create table games (" +
+							"	game_id integer primary key " +
+							"	generated always as identity (start with 1, increment by 1), " +
+							"	player1 varchar(40)," +
+							"   Player_One_Change integer," +
+							"	player2 varchar(40)," +
+							"	Player_Two_Change integer" +
+							")"
+					);
+					
+					stmt3.executeUpdate();
 					return true;
 				} finally {
 					DB_Util.closeQuietly(stmt1);
@@ -555,16 +668,19 @@ public class ChessDerbyDatabase{
 			public Boolean execute(Connection conn) throws SQLException {
 				List<DBPiece> pieceList; 
 				List<DBUser> userList; 
+				List<DBGame> gameList;
 				
 				try {
 					pieceList = InitiateData.getPieces();
 					userList = InitiateData.getUsers();
+					gameList = InitiateData.getGames();
 				} catch (IOException e) {
 					throw new SQLException("Couldn't read initial data", e);
 				}
 
 				PreparedStatement insertPiece = null;
 				PreparedStatement insertUser  = null;
+				PreparedStatement insertGame = null;
 
 				try {
 					//populate pieces table
@@ -589,6 +705,16 @@ public class ChessDerbyDatabase{
 						insertUser.addBatch();
 					}
 					insertUser.executeBatch();
+					
+					insertGame = conn.prepareStatement("insert into games (player1, Player_One_Change, player2, Player_Two_Change) values (?, ?, ?, ?)");
+					for (DBGame game : gameList) {
+						insertGame.setString(1, game.getPlayer1());
+						insertGame.setInt(2, game.getChange1());
+						insertGame.setString(3, game.getPlayer2());
+						insertGame.setInt(4, game.getChange2());
+						insertGame.addBatch();
+					}
+					insertGame.executeBatch();
 					
 					return true;
 				} finally {

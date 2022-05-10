@@ -7,6 +7,7 @@ import java.util.List;
 
 import edu.ycp.cs320.team6.chess.chessdb.model.DBPiece;
 import edu.ycp.cs320.team6.chess.chessdb.model.DBUser;
+import edu.ycp.cs320.team6.chess.chessdb.model.DBGame;
 
 public class InitiateData {
 	public static List<DBPiece> getPieces() throws IOException {
@@ -55,6 +56,31 @@ public class InitiateData {
 			return userList;
 		} finally {
 			readUsers.close();
+		}
+	}
+	
+	public static List<DBGame> getGames() throws IOException {
+		List<DBGame> gameList = new ArrayList<DBGame>();
+		ReadCSV readGames = new ReadCSV("games.csv");
+		try {
+			Integer game_ID = 1;
+			while (true) {
+				List<String> tuple = readGames.next();
+				if (tuple == null) {
+					break;
+				}
+				Iterator<String> i = tuple.iterator();
+				DBGame game = new DBGame();
+				game.setGameID(game_ID++);
+				game.setPlayer1(i.next());
+				game.setChange1(Integer.parseInt(i.next()));
+				game.setPlayer2(i.next());
+				game.setChange1(Integer.parseInt(i.next()));
+				gameList.add(game);
+			}
+			return gameList;
+		} finally {
+			readGames.close();
 		}
 	}
 }
