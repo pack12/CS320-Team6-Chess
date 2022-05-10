@@ -54,7 +54,7 @@ private ArrayList<String> squaresList = new ArrayList<String>();
 			String square = boardCol + boardRow;
 			squaresList.add(square);
 			System.out.println("SQUARE" + square);
-//			req.setAttribute("value"+i, square);
+
 			
 			
 			
@@ -67,37 +67,7 @@ private ArrayList<String> squaresList = new ArrayList<String>();
 			
 			
 			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-//			if(i==8) {
-//				secondaryI +=1;
-//				break;
-//			}else {
-////			for(int j=0; j<8; j++) {
-////				System.out.println( "I: "+ i +"J:"+j);
-////				req.setAttribute(square+"Image", board.getBoardImage(i, j));
-////				System.out.println("THIS IS THE SQUARE LOOP: " + square+"   "+board.getBoardImage(i, j));
-////			}
-//				System.out.println("SQUARE: " + square);
-//				System.out.println("Secondary I; " + secondaryI);
-//				System.out.println("Tile: " + board.getBoardImage(i, jj));
-////				req.setAttribute(square+"Image", board.getBoardImage(i, jj));
-//				jj+=1;
-//			}
-			
-			
-//			req.setAttribute("value"+i, board.getBoardImage(i, y));
-			
-			
+		
 			
 			
 		}
@@ -111,7 +81,7 @@ private ArrayList<String> squaresList = new ArrayList<String>();
 		int y = 0;
 		
 		for(int i=0; i<squaresList.size(); i++) {
-			System.out.println("SQUARE: "+ squaresList.get(i)+" "+"X:" + x+ "Y: " + y+ board.getBoardImage(x, y));
+//			System.out.println("SQUARE: "+ squaresList.get(i)+" "+"X:" + x+ "Y: " + y+ board.getBoardImage(x, y));
 			
 			
 			x = getXFromSquare(squaresList.get(i));
@@ -124,10 +94,7 @@ private ArrayList<String> squaresList = new ArrayList<String>();
 			
 		}
 		
-		System.out.println("Boardsjfklafjsakfja: " + board.getBoardImage(0, 2));
-//		req.setAttribute("value1", 1);
-		//board.addPieceToBoard("Images/Chess_black_pawn.png", 1, 3);
-		//req.setAttribute("image", board.getPiece(1, 3));
+
 		String username  = (String) req.getSession().getAttribute("username");
 		System.out.println("Who is this? " + username);
 		timesVisit+=1;
@@ -172,26 +139,33 @@ private ArrayList<String> squaresList = new ArrayList<String>();
 		System.out.println(to);
 		}
 		
+		int oldX = getXFromSquare(from);
+		int oldY = getYFromSquare(from);
 		
-		for(int i=1; i<=squares; i++) {
-			System.out.println(i);
-			req.setAttribute("value"+i, i);
+		int newX = getXFromSquare(to); 
+		int newY = getYFromSquare(to);
+		
+		board.updateBoardImage(oldX, oldY, newX, newY);
+		
+		int x;
+		int y;
+		for(int i=0; i<squaresList.size(); i++) {
+//			System.out.println("SQUARE: "+ squaresList.get(i)+" "+"X:" + x+ "Y: " + y+ board.getBoardImage(x, y));
+			
+			
+			x = getXFromSquare(squaresList.get(i));
+			y = getYFromSquare(squaresList.get(i));
+			
+			
+			req.setAttribute(squaresList.get(i)+"Image", board.getBoardImage(x, y));
+			
+			
 			
 		}
-//		req.setAttribute("image", "Images/Chess_black_pawn.png");
-		System.out.println("FilePath: "+filePath);
-//		req.setAttribute("image", );
-		System.out.println("ROWFROMNUMBER"+" "+getRowFromNumber(22));
-		System.out.println("COLFROMNUMBER" + " " + getColFromNumber(22));
-		//Piece piece = new Piece(xPosPiece, yPosPiece, hasMoved);
-		//controller.setModel(piece);
+//		req.setAttribute(to+"Image", board.getBoardImage(newX, newY));
 		
-		getRowFromParam(from);
 		
-		System.out.println("FROM col: "+" "+getColFromParam(from));
-		
-		board.updateBoardImage(1, 1, 2, 2);
-		req.setAttribute("b3Image", board.getBoardImage(2, 2));
+
 		
 		// Forward to view to render the result HTML document
 				req.getRequestDispatcher("/_view/game.jsp").forward(req, resp);
