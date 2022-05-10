@@ -369,7 +369,6 @@ public class ChessDerbyDatabase{
 				try {
 					// Retrieve all attributes from piece table
 					
-					System.out.print("FGBP A");
 					
 					stmt = conn.prepareStatement(
 							"select games.*" +
@@ -378,19 +377,16 @@ public class ChessDerbyDatabase{
 							" or games.player2 = ?"
 					);
 					
-						System.out.print("FGBP B");
 					
 						stmt.setString(1, player);
 						stmt.setString(2, player);
 						
 						
-						System.out.print("FGBP B");
 					
 					ArrayList<DBGame> result = new ArrayList<DBGame>();
 					
 					resultSet = stmt.executeQuery();
 					
-					System.out.print("FGBP C");
 					
 					// for testing that a result was returned
 					Boolean found = false;
@@ -412,7 +408,7 @@ public class ChessDerbyDatabase{
 						result = null;
 					}
 					
-					System.out.print("FGBP D");
+
 					
 					return result;
 				} finally {
@@ -657,6 +653,7 @@ public class ChessDerbyDatabase{
 				} finally {
 					DB_Util.closeQuietly(stmt1);
 					DB_Util.closeQuietly(stmt2);
+					DB_Util.closeQuietly(stmt3);
 				}
 			}
 		});
@@ -706,7 +703,7 @@ public class ChessDerbyDatabase{
 					}
 					insertUser.executeBatch();
 					
-					insertGame = conn.prepareStatement("insert into games (player1, Player_One_Change, player2, Player_Two_Change) values (?, ?, ?, ?)");
+					insertGame = conn.prepareStatement("insert into games (player1, PLAYER_ONE_CHANGE, player2, PLAYER_TWO_CHANGE) values (?, ?, ?, ?)");
 					for (DBGame game : gameList) {
 						insertGame.setString(1, game.getPlayer1());
 						insertGame.setInt(2, game.getChange1());

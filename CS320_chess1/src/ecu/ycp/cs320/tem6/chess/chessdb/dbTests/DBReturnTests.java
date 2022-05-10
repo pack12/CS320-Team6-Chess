@@ -75,7 +75,7 @@ public class DBReturnTests {
 		
 		@Test public void testReturnGames() {
 			ArrayList<DBGame> gamerRage = db.findGamesByPlayer("XXXgamerManXXX");
-			assertEquals(gamerRage, null);
+			assertEquals("nobody", gamerRage.get(0).getPlayer2());
 		}
 	}
 

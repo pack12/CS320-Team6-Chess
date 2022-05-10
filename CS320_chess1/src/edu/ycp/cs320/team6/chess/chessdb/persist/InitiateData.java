@@ -75,7 +75,7 @@ public class InitiateData {
 				game.setPlayer1(i.next());
 				game.setChange1(Integer.parseInt(i.next()));
 				game.setPlayer2(i.next());
-				game.setChange1(Integer.parseInt(i.next()));
+				game.setChange2(Integer.parseInt(i.next()));
 				gameList.add(game);
 			}
 			return gameList;
