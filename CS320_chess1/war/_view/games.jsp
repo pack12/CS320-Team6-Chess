@@ -40,6 +40,25 @@
 		background: SandyBrown;
 		}
 		</style>
+		
+		<script>
+		let goBack=false;
+		
+		function back(){
+		
+		goBack=true;
+		document.getElementById('goBack').value = goBack;
+		console.log(goBack);
+		
+		}
+		
+		function forward(){
+		goBack=false;
+		console.log(goBack);}
+		
+
+		
+		</script>
 	</head>
 
 	<body style="background-color:SteelBlue">
@@ -50,16 +69,17 @@
 		
 		<br>
           
+        <div style = "text-align: center; font-size: 50px;">
+        	<p> GAME STATS </p>
+        </div>
+        
+        <div style = "text-align: center; font-size: 20px;" id = "theBreadAndButter"><ul style = "list-style-type:none">${innerstuff} </ul></div>
          
-          <a href="/chess/game">
-		<input type="Submit" value="Start Matchmaking" style="height=50px; width=300px;">
-		</a><br>
-		<input type= "Submit" value="Friends" style="height=50px; width=200px;"/>
-		<br>
-		  <a href="/chess/credits">
-		<input type="Submit" value="Credits" style="height=50px; width=200px;"/></a><br>
-		
-        <input type="Submit" value="Games" style=" height=50px; width=200px;"/>
+         
+         
+          <form action="${pageContext.servletContext.contextPath}/fullmenu" method="get">
+	<button onclick="back()" name="goBack" value=${goBack}> Go back</button> </form>
+	
        <!--
         <center>
          <h1>Session Tracking</h1>

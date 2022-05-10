@@ -13,6 +13,7 @@ import edu.ycp.cs320.team6.chess.controller.Game;
 import edu.ycp.cs320.team6.chess.model.Piece;
 import edu.ycp.cs320.team6.chess.model.Board;
 
+
 public class GameServlet extends HttpServlet{
 	
 private static final long serialVersionUID = 1L;
@@ -31,6 +32,7 @@ private int squares = 64;
 private int secondaryI = 1;
 private ArrayList<Integer> numbers;
 private ArrayList<String> squaresList = new ArrayList<String>();
+
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -94,7 +96,7 @@ private ArrayList<String> squaresList = new ArrayList<String>();
 			
 			
 			
-		}
+		}	
 		
 
 		String username  = (String) req.getSession().getAttribute("username");
@@ -114,8 +116,6 @@ private ArrayList<String> squaresList = new ArrayList<String>();
 		if(playerOne == true && playerTwo ==true) {
 			System.out.println("These requiremnets are fufilled");
 		}
-		
-		
 		
 		
 		
