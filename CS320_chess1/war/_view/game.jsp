@@ -44,6 +44,7 @@
 		button{
 		border-radius: 10px;
 		background: SandyBrown;
+		
 		}
 		
 		</style>
@@ -363,6 +364,8 @@
 	</div>
 	<form action="${pageContext.servletContext.contextPath}/fullmenu" method="get">
 	<button onclick="back()" name="goBack" value=${goBack}> Go back</button> <button onclick="forward()"> Go forward </button> </form>
+	
+	<form action="${pageContext.servletContext.contextPath}/game" method="post" style="text-align: center;"> <button name="Refresh" > Refresh</button></form>
 	<p> ${goBack}</p>
 	
 	

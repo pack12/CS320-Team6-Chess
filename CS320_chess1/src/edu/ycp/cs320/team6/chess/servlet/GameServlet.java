@@ -135,7 +135,12 @@ private ChessDerbyDatabase db = new ChessDerbyDatabase();
 		
 		String from = req.getParameter("start");
 		String to = req.getParameter("end");
-		
+//		if(from ==null || to == null) {
+//			
+//			
+//			
+//		}
+		if(from !=null && to!= null) {
 		int xold = makeCharInt(from.charAt(0));
 		int yold = Character.getNumericValue(from.charAt(1));
 		
@@ -144,6 +149,7 @@ private ChessDerbyDatabase db = new ChessDerbyDatabase();
 		
 		if(db.findPieceByPosition(xold, yold) != null && db.findPieceByPosition(xold, yold).getColor().equals(req.getSession().getAttribute("playerColor"))) {
 		game.validateCheck(xold, yold, xnew, ynew);
+		}
 		}
 		
 		//from.charAt(0)
@@ -157,10 +163,10 @@ private ChessDerbyDatabase db = new ChessDerbyDatabase();
 		
 		
 		
-		int oldX = getXFromSquare(from);
-		int oldY = getYFromSquare(from);
-		int newX = getXFromSquare(to); 
-		int newY = getYFromSquare(to);
+//		int oldX = getXFromSquare(from);
+//		int oldY = getYFromSquare(from);
+//		int newX = getXFromSquare(to); 
+//		int newY = getYFromSquare(to);
 		
 		
 		
