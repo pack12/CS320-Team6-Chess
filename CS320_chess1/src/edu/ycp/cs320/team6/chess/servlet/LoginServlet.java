@@ -57,8 +57,13 @@ private static final long serialVersionUID = 1L;
 		user = db.findUserByUsernameAndPassword(userName, passWord);
 
 		System.out.println("Something!!");
-		
-		if(model.getUserName().equals(user.getUsername()) && model.getPassword().equals(user.getPassword())) {
+		if(user == null) {
+			System.out.println("Hello");
+			errorMessage = "Incorrect Username or password";
+			req.setAttribute("errorMessage", errorMessage);
+//			resp.sendRedirect(req.getContextPath() + "/login");
+			req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
+		}else if(model.getUserName().equals(user.getUsername()) && model.getPassword().equals(user.getPassword())) {
 			
 			
 			System.out.println("test: "+req.getAttribute(userName));
