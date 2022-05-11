@@ -18,11 +18,16 @@
 	margin: 0;
 	position: absolute;
 	left: 50%;}
+	.error {
+			color: red;
+		}
 </style>
 	<body style="background-color:SteelBlue">
 	
 	<h1>Login</h1>
-	
+	<c:if test="${! empty errorMessage}">
+			<div class="error">${errorMessage}</div>
+		</c:if>
 		<form  action="${pageContext.servletContext.contextPath}/login" method="post">
 		
 					<div>
