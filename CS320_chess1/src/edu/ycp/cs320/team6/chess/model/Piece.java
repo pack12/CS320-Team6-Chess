@@ -26,11 +26,7 @@ public abstract class Piece implements PieceInterface{
 	}
 	
 	
-	public void move(int destinationX, int destinationY){
-		this.X = destinationX;
-		this.Y = destinationY;
-		this.hasMoved = true;
-	}
+	
 	
 	public int getX() {
 		return this.X;

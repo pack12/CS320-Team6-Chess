@@ -12,6 +12,8 @@ import javax.servlet.http.HttpSession;
 import edu.ycp.cs320.team6.chess.controller.Game;
 import edu.ycp.cs320.team6.chess.model.Piece;
 import edu.ycp.cs320.team6.chess.model.Board;
+import edu.ycp.cs320.team6.chess.chessdb.persist.ChessDerbyDatabase;
+import edu.ycp.cs320.team6.chess.chessdb.model.DBPiece;
 
 
 public class GameServlet extends HttpServlet{
@@ -32,6 +34,7 @@ private int squares = 64;
 private int secondaryI = 1;
 private ArrayList<Integer> numbers;
 private ArrayList<String> squaresList = new ArrayList<String>();
+private ChessDerbyDatabase db = new ChessDerbyDatabase();
 
 
 	@Override
@@ -40,8 +43,8 @@ private ArrayList<String> squaresList = new ArrayList<String>();
 		
 		System.out.println("Game Servlet: doGet");
 		
-		board.fillBoardImage();
-		board.fillBoardSql();
+	
+	
 		for(int i=0; i<8;i++) {
 			for(int j=0; j<8;j++) {
 //				System.out.println("I:" + i+ "J: " + j+ board.getBoardImage(i, j));
@@ -71,7 +74,7 @@ private ArrayList<String> squaresList = new ArrayList<String>();
 			
 			
 			
-		
+			
 			
 			
 		}
@@ -90,6 +93,8 @@ private ArrayList<String> squaresList = new ArrayList<String>();
 			
 			x = getXFromSquare(squaresList.get(i));
 			y = getYFromSquare(squaresList.get(i));
+			
+			
 			System.out.print("Here is squareslist:" + squaresList.get(i)); 
 			
 			req.setAttribute(squaresList.get(i)+"Image", board.getImageFromPosition(x+1, y+1));
@@ -131,13 +136,23 @@ private ArrayList<String> squaresList = new ArrayList<String>();
 		String from = req.getParameter("start");
 		String to = req.getParameter("end");
 		
+		int xold = makeCharInt(from.charAt(0));
+		int yold = Character.getNumericValue(from.charAt(1));
+		
+		int xnew = makeCharInt(to.charAt(0));
+		int ynew = Character.getNumericValue(to.charAt(1));
+		
+		if(db.findPieceByPosition(xold, yold) != null && db.findPieceByPosition(xold, yold).getColor().equals(req.getSession().getAttribute("playerColor"))) {
+		game.validateCheck(xold, yold, xnew, ynew);
+		}
+		
 		//from.charAt(0)
 		
 		//game.validateCheck(oX, oY, nX, nY)
 		
 		String filePath = req.getParameter("src");
 		
-
+		
 		System.out.println("donde"+req.getSession().getAttribute("playerColor"));
 		
 		
@@ -390,6 +405,38 @@ public String makeIntaLetter(int y, int x) {
 	
 	return ret;
 	
+}
+
+public Integer makeCharInt(Character v) {
+	
+	int x = 0;
+	
+	if(v.equals('a')){
+		x=1;
+	}
+	else if(v.equals('b')) {
+		x=2;
+	}
+	else if(v.equals('c')) {
+		x=3;
+	}
+	else if(v.equals('d')) {
+		x=4;
+	}
+	else if(v.equals('e')) {
+		x=5;
+	}
+	else if(v.equals('f')) {
+		x=6;
+	}
+	else if(v.equals('g')) {
+		x=7;
+	}
+	else {
+		x=8;
+	}
+	
+	return x;
 }
 
 }

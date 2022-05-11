@@ -20,11 +20,13 @@ public class GameValidateTesting {
 	
 	@Test
 	public void testValidateCompletely() {
-		assertEquals(true, game.validateCheck(4, 2, 4, 3));
+		/*assertEquals(true, game.validateCheck(4, 2, 4, 3));
 		assertEquals(true, game.validateCheck(5, 7, 5, 6));
 		assertEquals(true, game.validateCheck(6, 8, 2, 4));
 		assertEquals(true, game.validateEach(2, 4, 5, 1));
 		assertEquals(false, game.validateCheck(8, 2, 8, 3));
-		assertEquals(true, game.validateCheck(3, 1, 4, 2));
+		assertEquals(true, game.validateCheck(3, 1, 4, 2));*/
+		assertEquals(true, game.validateCheck(1, 2, 1, 4));
+		assertEquals(false, game.validateCheck(1, 4, 1, 6));
 	}
 }

@@ -16,7 +16,7 @@ public class Pawn extends Piece implements PieceInterface{
 		if(color.equals("White")) {
 			if ((lookY-Y) == 1 && abs(lookX - X) == 1) {
 				return true;
-			}else if(abs(X - lookX) == 0 && (lookY - Y) == 1 || abs(X - lookX) == 0 && (lookY - Y) == 2 && !hasLeaped) {
+			}else if(abs(X - lookX) == 0 && (lookY - Y) == 1 || abs(X - lookX) == 0 && (lookY - Y) == 2 && hasMoved == false) {
 				return true;
 			}
 			else {
@@ -27,7 +27,7 @@ public class Pawn extends Piece implements PieceInterface{
 		else {
 			if ((Y-lookY) == 1 && abs(lookX - X) == 1) {
 				return true;
-			}else if(abs(X - lookX) == 0 && (Y- lookY) == 1 || abs(X - lookX) == 0 && (Y - lookY) == 2 && !hasLeaped) {
+			}else if(abs(X - lookX) == 0 && (Y- lookY) == 1 || abs(X - lookX) == 0 && (Y - lookY) == 2 && hasMoved == false) {
 				return true;
 			}
 			else {

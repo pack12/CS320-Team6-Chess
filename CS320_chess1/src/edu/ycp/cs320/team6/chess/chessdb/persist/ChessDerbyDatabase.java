@@ -448,6 +448,34 @@ public class ChessDerbyDatabase{
 		});
 	}
 	
+	public void updatePieceHasMoved(final int x, final int y) {
+		executeTransaction(new Transaction<Boolean>() {
+			@Override
+			public Boolean execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				
+				
+				try {
+					// Replace the x and y for the initial position with the final position
+					stmt = conn.prepareStatement(
+							"update pieces" +
+							" set pieces.hasmoved = 'Y'" +
+							" where pieces.x = ? and pieces.y = ? and pieces.captured = 'N'"
+					);
+					stmt.setInt(1, x);
+					stmt.setInt(2, y);
+					
+					
+					stmt.execute();
+					
+					return true;
+				} finally {
+					DB_Util.closeQuietly(stmt);
+				}
+			}
+		});
+	}
+	
 	public void addGameToGames(final String player1, final int change1, final String player2, final int change2) {
 		executeTransaction(new Transaction<Boolean>() {
 			@Override

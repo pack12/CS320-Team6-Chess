@@ -113,8 +113,7 @@ public class Game{
 		}
 		
 		if(!validateEach(oX, oY, nX, nY)) {
-			System.out.print(db.findPieceByPosition(oX, oY).getType() + db.findPieceByPosition(oX, oY).getColor());
-			System.out.print("False At A");
+			
 			return false;
 		}
 		else {
@@ -133,14 +132,14 @@ public class Game{
 		
 		for(DBPiece each : cycle) {
 			endChanger = validateEach(each.getX(), each.getY(), king.getX(), king.getY());
-			System.out.print("First Piece:" + each.getY() + each.getX() + "King:" +king.getX() + " " + king.getY() + "Bool:" + endChanger);
+			
 			if(endChanger) {
-				System.out.print("False At B");
+			
 				end = false;
 			}
 		}
 		
-		System.out.print('\n');
+
 		
 		if(!end) {
 			db.updatePiecePosition(nX, nY, oX, oY);
@@ -148,10 +147,11 @@ public class Game{
 		}
 		else {
 			db.finalizeTemp();
+			db.updatePieceHasMoved(nX, nY);
 		}
 		
 		
-		System.out.print("end ret");
+
 		return end;
 	}
 	

@@ -58,11 +58,7 @@ public abstract class Player{
 		offBoard.add(piece[i]);
 	}
 	
-	public void updatePiece(int newX, int newY) {
-		playerPiece.move(newX, newY);
-		boolean hasPieceMoved = playerPiece.hasMoved;
-		
-	}
+	
 	
 	
 	
