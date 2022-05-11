@@ -227,7 +227,7 @@ for(int i=0; i<blackPieces.size(); i++) {
 String filePath = translatePieceImage(blackPieces.get(i).getX(), blackPieces.get(i).getY());
 
 
-System.out.println("Black fill in X: " + blackPieces.get(i).getX() + "Black fill in Y: " + blackPieces.get(i).getY()+ "Black PIece? " + filePath + blackPieces.get(i).getType());
+
 
 
 board[row][col] = filePath;
@@ -268,7 +268,7 @@ return src;
 
 public String getImageFromPosition(int x, int y) {
 
-	String filePath = "Images/Chess_black_pawn.png";
+	String filePath = "";
 	
 	DBPiece piece = db.findPieceByPosition(x, y);
 	

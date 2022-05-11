@@ -47,7 +47,7 @@ private ArrayList<String> squaresList = new ArrayList<String>();
 //				System.out.println("I:" + i+ "J: " + j+ board.getBoardImage(i, j));
 			}
 		}
-		int jj = 0;
+		
 		//originally this was i<square
 		for(int i=0; i<=squares; i++) {
 //			System.out.println(i);
@@ -80,7 +80,7 @@ private ArrayList<String> squaresList = new ArrayList<String>();
 			squaresList.remove(0);
 		}
 		
-		System.out.println(squaresList);
+		
 		int x = 0; 
 		int y = 0;
 		
@@ -90,9 +90,9 @@ private ArrayList<String> squaresList = new ArrayList<String>();
 			
 			x = getXFromSquare(squaresList.get(i));
 			y = getYFromSquare(squaresList.get(i));
+			System.out.print("Here is squareslist:" + squaresList.get(i)); 
 			
-			
-			req.setAttribute(squaresList.get(i)+"Image", board.getBoardImage(x, y));
+			req.setAttribute(squaresList.get(i)+"Image", board.getImageFromPosition(x+1, y+1));
 			
 			
 			
@@ -148,7 +148,7 @@ private ArrayList<String> squaresList = new ArrayList<String>();
 		int newY = getYFromSquare(to);
 		
 		
-		board.translatePieceImage(oldX, oldY);
+		
 		
 		
 		
@@ -165,7 +165,7 @@ private ArrayList<String> squaresList = new ArrayList<String>();
 			y = getYFromSquare(squaresList.get(i));
 			
 			
-			req.setAttribute(squaresList.get(i)+"Image", board.getBoardImage(x, y));
+			req.setAttribute(squaresList.get(i)+"Image", board.getImageFromPosition(x+1, y+1));
 			
 			
 			
@@ -358,5 +358,38 @@ private int getRowFromNumber(int number) {
 	
 }
 
+public String makeIntaLetter(int y, int x) {
+	String ret = "";
+	if(y==1) {
+		ret = "a";
+	}
+	else if(y==2) {
+		ret = "b";
+	}
+	else if(y==3) {
+		ret = "c";
+	}
+	else if(y==4) {
+		ret = "d";
+	}
+	else if(y==5) {
+		ret = "e";
+	}
+	else if(y==6) {
+		ret = "f";
+	}
+	else if(y==7) {
+		ret = "g";
+	}
+	else if(y==8){
+		ret = "h";
+	}
+	String add = String.valueOf(x);
+	
+	ret += add;
+	
+	return ret;
+	
+}
 
 }

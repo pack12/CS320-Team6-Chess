@@ -99,67 +99,67 @@
 				<div class="capturebox"></div><br> 
 		<!--a8-->
 				<div class="div1" id="a8" ondrop="drop(event)" ondragover="allowDrop(event)">${value8}
-					<img src="${a8Image}" alt="Black Queen" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="bRook1" width="60" height="60"/>
+					<img src="${a8Image}"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="bRook1" width="60" height="60"/>
 				</div>
 		<!--b8-->
 				<div class="div2" id="b8" ondrop="drop(event)" ondragover="allowDrop(event)">${value16}
-					<img src="${b8Image}" alt="Black Queen" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="bKnight1" width="60" height="60"/>
+					<img src="${b8Image}"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="bKnight1" width="60" height="60"/>
 				</div>
 		<!--c8-->
 				<div class="div1" id="c8" ondrop="drop(event)" ondragover="allowDrop(event)">${value24}
-					<img src="${c8Image}" alt="Black Queen" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="bBishop1" width="60" height="60"/>
+					<img src="${c8Image}"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="bBishop1" width="60" height="60"/>
 				</div>
 		<!--d8-->
 				<div class="div2" id="d8" ondrop="drop(event)" ondragover="allowDrop(event)">${value32}
-					<img src="${d8Image}" alt="Black Queen" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="bKing" width="60" height="60"/>
+					<img src="${d8Image}"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="bKing" width="60" height="60"/>
 				</div>
 		<!--e8-->
 				<div class="div1" id="e8" ondrop="drop(event)" ondragover="allowDrop(event)">${value40}
-					<img src="${e8Image}" alt="Black Queen" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="bQueen" width="60" height="60"/>
+					<img src="${e8Image}"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="bQueen" width="60" height="60"/>
 				</div>
 		<!--f8-->
 				<div class="div2" id="f8" ondrop="drop(event)" ondragover="allowDrop(event)">${value48}
-					<img src="${f8Image}" alt="Black Queen" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="bBishop2" width="60" height="60"/>
+					<img src="${f8Image}"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="bBishop2" width="60" height="60"/>
 				</div>
 		<!--g8-->
 				<div class="div1" id="g8" ondrop="drop(event)" ondragover="allowDrop(event)">${value56}
-					<img src="${g8Image}" alt="Black Queen" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="bKnight2" width="60" height="60"/>
+					<img src="${g8Image}"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="bKnight2" width="60" height="60"/>
 				</div>
 		<!--h8-->
 				<div class="div2" id="h8" ondrop="drop(event)" ondragover="allowDrop(event)">${value64}
-					<img src="${h8Image}" alt="Black Queen" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="bRook2" width="60" height="60"/>
+					<img src="${h8Image}"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="bRook2" width="60" height="60"/>
 				</div> <br>
 		<!--a7-->
 				<div class="div2" id="a7" ondrop="drop(event)" ondragover="allowDrop(event)">${value7}
-					<img src="${a7Image}" alt="Black Queen" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="bPawn1" width="60" height="60"/>
+					<img src="${a7Image}"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="bPawn1" width="60" height="60"/>
 				</div>
 		<!--b7-->
 				<div class="div1" id="b7" ondrop="drop(event)" ondragover="allowDrop(event)">${value15}
-					<img src="${b7Image}" alt="Black Queen" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="bPawn2" width="60" height="60"/>
+					<img src="${b7Image}"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="bPawn2" width="60" height="60"/>
 				</div>
 		<!--c7-->
 				<div class="div2" id="c7" ondrop="drop(event)" ondragover="allowDrop(event)">${value23}
-					<img src="${c7Image}" alt="Black Queen" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="bPawn3" width="60" height="60"/>
+					<img src="${c7Image}"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="bPawn3" width="60" height="60"/>
 				</div>
 		<!--d7-->
 				<div class="div1" id="d7" ondrop="drop(event)" ondragover="allowDrop(event)">${value31}
-					<img src="${d7Image}" alt="Black Queen" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="bPawn4" width="60" height="60"/>
+					<img src="${d7Image}"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="bPawn4" width="60" height="60"/>
 				</div>
 		<!--e7-->
 				<div class="div2" id="e7" ondrop="drop(event)" ondragover="allowDrop(event)">${value39}
-					<img src="${e7Image}" alt="Black Queen" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="bPawn5" width="60" height="60"/>
+					<img src="${e7Image}"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="bPawn5" width="60" height="60"/>
 				</div>
 		<!--f7-->
 				<div class="div1" id="f7" ondrop="drop(event)" ondragover="allowDrop(event)">${value47}
-					<img src="${f7Image}" alt="Black Queen" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="bPawn6" width="60" height="60"/>
+					<img src="${f7Image}"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="bPawn6" width="60" height="60"/>
 				</div>
 		<!--g7-->
 				<div class="div2" id="g7" ondrop="drop(event)" ondragover="allowDrop(event)">${value55}
-					<img src="${g7Image}" alt="Black Queen" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="bPawn7" width="60" height="60"/>
+					<img src="${g7Image}"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="bPawn7" width="60" height="60"/>
 				</div>
 		<!--h7-->
 				<div class="div1" id="h7" ondrop="drop(event)" ondragover="allowDrop(event)">${value63}
-					<img src="${h7Image}" alt="Black Queen" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="bPawn8" width="60" height="60"/>
+					<img src="${h7Image}"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="bPawn8" width="60" height="60"/>
 				</div> 
 		<br>
 		<!--a6-->
@@ -293,67 +293,67 @@
 				</div> <br>
 		<!--a2-->
 				<div class="div1" id="a2" ondrop="drop(event)" ondragover="allowDrop(event)">${value2}
-					<img src="${a2Image}" alt="Black Queen" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="wPawn1" width="60" height="60"/>
+					<img src="${a2Image}"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="wPawn1" width="60" height="60"/>
 				</div>
 		<!--b2-->
 				<div class="div2" id="b2" ondrop="drop(event)" ondragover="allowDrop(event)">${value10}
-					<img src="${b2Image}" alt="Black Queen" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="wPawn2" width="60" height="60"/>
+					<img src="${b2Image}"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="wPawn2" width="60" height="60"/>
 				</div>
 		<!--c2-->
 				<div class="div1" id="c2" ondrop="drop(event)" ondragover="allowDrop(event)">${value18}
-					<img src="${c2Image}" alt="Black Queen" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="wPawn3" width="60" height="60"/>
+					<img src="${c2Image}"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="wPawn3" width="60" height="60"/>
 				</div>
 		<!--d2-->
 				<div class="div2" id="d2" ondrop="drop(event)" ondragover="allowDrop(event)">${value26}
-					<img src="${d2Image}" alt="Black Queen" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="wPawn4" width="60" height="60"/>
+					<img src="${d2Image}"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="wPawn4" width="60" height="60"/>
 				</div>
 		<!--e2-->
 				<div class="div1" id="e2" ondrop="drop(event)" ondragover="allowDrop(event)">${value34}
-					<img src="${e2Image}" alt="Black Queen" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="wPawn5" width="60" height="60"/>
+					<img src="${e2Image}"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="wPawn5" width="60" height="60"/>
 				</div>
 		<!--f2-->
 				<div class="div2" id="f2" ondrop="drop(event)" ondragover="allowDrop(event)">${value42}
-					<img src="${f2Image}" alt="Black Queen" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="wPawn6" width="60" height="60"/>
+					<img src="${f2Image}"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="wPawn6" width="60" height="60"/>
 				</div>
 		<!--g2-->
 				<div class="div1" id="g2" ondrop="drop(event)" ondragover="allowDrop(event)">${value50}
-					<img src="${g2Image}" alt="Black Queen" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="wPawn7" width="60" height="60"/>
+					<img src="${g2Image}"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="wPawn7" width="60" height="60"/>
 				</div>
 		<!--h2-->
 				<div class="div2" id="h2" ondrop="drop(event)" ondragover="allowDrop(event)">${value58}
-					<img src="${h2Image}" alt="Black Queen" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="wPawn8" width="60" height="60"/>
+					<img src="${h2Image}"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="wPawn8" width="60" height="60"/>
 				</div> <br>
 		<!--a1-->
 				<div class="div2" id="a1" ondrop="drop(event)" ondragover="allowDrop(event)">${value1}
-					<img src="${a1Image}" alt="Black Queen" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="wRook1" width="60" height="60"/>
+					<img src="${a1Image}"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="wRook1" width="60" height="60"/>
 				</div>
 		<!--b1-->
 				<div class="div1" id="b1" ondrop="drop(event)" ondragover="allowDrop(event)">${value9}
-					<img src="${b1Image}" alt="Black Queen" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="wKnight1" width="60" height="60"/>
+					<img src="${b1Image}"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="wKnight1" width="60" height="60"/>
 				</div>
 		<!--c1-->
 				<div class="div2" id="c1" ondrop="drop(event)" ondragover="allowDrop(event)">${value17}
-					<img src="${c1Image}" alt="Black Queen" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="wBishop1" width="60" height="60"/>
+					<img src="${c1Image}"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="wBishop1" width="60" height="60"/>
 				</div>
 		<!--d1-->
 				<div class="div1" id="d1" ondrop="drop(event)" ondragover="allowDrop(event)">${value25}
-					<img src="${d1Image}" alt="Black Queen" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="wQueen" width="60" height="60"/>
+					<img src="${d1Image}"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="wQueen" width="60" height="60"/>
 				</div>
 		<!--e1-->
 				<div class="div2" id="e1" ondrop="drop(event)" ondragover="allowDrop(event)">${value33}
-					<img src="${e1Image}" alt="Black Queen" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="wKing" width="60" height="60"/>
+					<img src="${e1Image}"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="wKing" width="60" height="60"/>
 				</div>
 		<!--f1-->
 				<div class="div1" id="f1" ondrop="drop(event)" ondragover="allowDrop(event)">${value41}
-					<img src="${f1Image}" alt="Black Queen" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="wBishop2" width="60" height="60"/>
+					<img src="${f1Image}"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="wBishop2" width="60" height="60"/>
 				</div>
 		<!--g1-->
 				<div class="div2" id="g1" ondrop="drop(event)" ondragover="allowDrop(event)">${value49}
-					<img src="${g1Image}" alt="Black Queen" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="wKnight2" width="60" height="60"/>
+					<img src="${g1Image}"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="wKnight2" width="60" height="60"/>
 				</div>
 		<!--h1-->
 				<div class="div1" id="h1" ondrop="drop(event)" ondragover="allowDrop(event)">${value57}
-					<img src="${h1Image}" alt="Black Queen" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="wRook2" width="60" height="60"/>
+					<img src="${h1Image}"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" id="wRook2" width="60" height="60"/>
 				</div>
 		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 		
