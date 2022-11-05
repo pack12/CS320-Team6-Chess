@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Sat Nov 05 18:20:00 EDT 2022:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-0184-49e1-1a40-00000a997d08 
+on database directory C:\Github_Repo\CS320-Team6-Chess\The_Biggest_Hurdle\test.db with class loader sun.misc.Launcher$AppClassLoader@73d16e93 
+Loaded from file:/C:/CS_320_Eclipse/Lab_archive/CS320_Derby/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_311-b11
+user.dir=C:\Github_Repo\CS320-Team6-Chess\The_Biggest_Hurdle
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
